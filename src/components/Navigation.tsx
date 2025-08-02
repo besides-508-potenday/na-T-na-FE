@@ -6,6 +6,7 @@ function Navigation() {
   const navItems = [
     { path: '/', label: '홈' },
     { path: '/chat', label: '채팅' },
+    { path: '/chat2', label: '채팅2' },
   ];
 
   return (

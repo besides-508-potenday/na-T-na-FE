@@ -1,35 +1,35 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Plus, Send } from 'lucide-react';
 
 interface InputFieldProps {
   message: string;
-  setMessage: (value: string) => void;
-  sendMessage: (e: React.FormEvent) => void;
+  setMessage: (message: string) => void;
+  sendMessage: (event: React.FormEvent) => void;
 }
 
-const InputField: React.FC<InputFieldProps> = ({
-  message,
-  setMessage,
-  sendMessage,
-}) => {
+const InputField = ({ message, setMessage, sendMessage }: InputFieldProps) => {
   return (
-    <div className="w-full fixed bottom-0 bg-red-500 flex min-h-[50px]">
-      <div className="w-[50px] bg-slate-500 text-white font-bold flex justify-center items-center text-2xl">
-        +
-      </div>
-      <form onSubmit={sendMessage} className="flex w-full">
+    <div className="bg-transparent flex absolute bottom-0 w-full px-2 pb-1">
+      <button
+        type="button"
+        className="w-10 h-10 rounded-full bg-[#3B3B3E] text-white flex items-center justify-center"
+      >
+        <Plus className="w-5 h-5" />
+      </button>
+      <form onSubmit={sendMessage} className="flex justify-between w-full">
         <Input
           placeholder="Type in here…"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 border-0 flex-1 px-2"
+          onChange={(event) => setMessage(event.target.value)}
+          className="h-10 w-full mx-2 text-white rounded-lg border-none focus-visible:ring-0 focus-visible:ring-offset-0  bg-[#3B3B3E]"
         />
         <Button
-          type="submit"
           disabled={message === ''}
-          className="rounded-none min-w-[70px] bg-yellow-300 hover:bg-yellow-400 text-black"
+          type="submit"
+          className="w-10 h-10 rounded-full border-none text-white bg-indigo-700 hover:bg-indigo-600 disabled:opacity-50 p-0 flex items-center justify-center"
         >
-          전송
+          <Send className="w-5 h-5" />
         </Button>
       </form>
     </div>
