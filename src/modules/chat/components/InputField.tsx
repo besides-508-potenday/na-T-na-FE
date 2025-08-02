@@ -10,7 +10,7 @@ interface InputFieldProps {
 
 const InputField = ({ message, setMessage, sendMessage }: InputFieldProps) => {
   return (
-    <div className="bg-transparent flex absolute bottom-0 w-full px-2 pb-1">
+    <div className="bg-transparent flex w-full px-2 pb-1">
       <button
         type="button"
         className="w-10 h-10 rounded-full bg-[#3B3B3E] text-white flex items-center justify-center"

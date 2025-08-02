@@ -1,9 +1,25 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import { useEffect, useRef } from 'react';
 
-const MessageContainer = ({ messageList, user }) => {
+interface MessageContainerProps {
+  messageList: any[];
+  user: any;
+}
+
+const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messageList]);
+
   return (
-    <div className="space-y-2">
+    <div className="h-full overflow-y-auto p-4 space-y-2">
       {messageList.map((message, index) => {
         const isSystem = message.user.name === 'system';
         const isMyMessage = message.user.name === user.name;
@@ -54,6 +70,7 @@ const MessageContainer = ({ messageList, user }) => {
           </div>
         );
       })}
+      <div ref={messagesEndRef} />
     </div>
   );
 };
