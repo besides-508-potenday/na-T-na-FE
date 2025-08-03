@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import App from '@/App';
 import Home from './pages/Home';
 import Chat from './pages/Chat';
+import Characters from './pages/Characters';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: 'chat',
         element: <Chat />,
+      },
+      {
+        path: 'characters',
+        element: <Characters />,
       },
     ],
   },

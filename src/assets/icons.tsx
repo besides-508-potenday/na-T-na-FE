@@ -81,3 +81,20 @@ export const ChevronLeftIcon = ({ size = 24, fill = '#18181B' }) => {
     </svg>
   );
 };
+
+export const ArrowIcon = ({ size = 24, fill = 'white' }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 14 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 14.5V13.5H3V12.5H4V11.5H5V10.5H6V9.5H7V8.5H8V7.5H9V6.5H10V5.5H11V4.5H12V10.5H14V0.5H4V2.5H10V3.5H9V4.5H8V5.5H7V6.5H6V7.5H5V8.5H4V9.5H3V10.5H2V11.5H1V12.5H0V14.5H2Z"
+        fill={fill}
+      />
+    </svg>
+  );
+};

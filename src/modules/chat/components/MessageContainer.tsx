@@ -1,6 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from '@/lib/utils';
 import { useEffect, useRef } from 'react';
+import MyMessageBubble from '../ui/components/MyMessageBubble';
+import AiMessageBubble from '../ui/components/AiMessageBubble';
 
 interface MessageContainerProps {
   messageList: any[];
@@ -19,13 +21,12 @@ const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
   }, [messageList]);
 
   return (
-    <div className="h-full overflow-y-auto p-4 space-y-2">
+    <div className="h-full overflow-y-auto space-y-4">
       {messageList.map((message, index) => {
         const isSystem = message.user.name === 'system';
         const isMyMessage = message.user.name === user.name;
         const isOtherMessage = !isSystem && !isMyMessage;
 
-        // Profile image visibility logic for other users' messages
         const showAvatar =
           isOtherMessage &&
           (index === 0 ||
@@ -47,25 +48,46 @@ const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
 
         if (isMyMessage) {
           return (
-            <div key={message._id} className="flex justify-end mr-3 mb-2">
-              <div className="bg-indigo-600 text-primary-foreground rounded-lg px-3 py-2 max-w-xs text-sm">
-                {message.chat}
-              </div>
+            <div key={message._id} className="flex justify-end">
+              <MyMessageBubble>{message.chat}</MyMessageBubble>
             </div>
           );
         }
 
         return (
-          <div
-            key={message._id}
-            className="flex items-start space-x-2 ml-3 mb-2"
-          >
-            <Avatar className={cn('w-9 h-9', !showAvatar && 'invisible')}>
-              <AvatarImage src="/profile.jpeg" alt="Profile" />
-              <AvatarFallback>U</AvatarFallback>
-            </Avatar>
-            <div className="bg-[#262727] text-white rounded-lg px-3 py-2 max-w-xs text-sm shadow-sm">
-              {message.chat}
+          <div key={message._id} className="flex items-start gap-1">
+            {/* 프로필 */}
+            <div className="flex flex-col items-center">
+              <div
+                className={cn(
+                  'w-7 h-7 rounded-full bg-[#95CDFE] border border-[#2C55C7] flex items-center justify-center',
+                  !showAvatar && 'invisible'
+                )}
+              >
+                <img
+                  src="/tudak2.png"
+                  alt="투닥이"
+                  className="w-5 h-5 object-contain"
+                />
+              </div>
+            </div>
+
+            {/* 채팅 영역 */}
+            <div className="flex flex-col">
+              {/* 이름 */}
+              {showAvatar && (
+                <div className="px-1 mb-1">
+                  <span
+                    className="text-xs font-semibold text-black"
+                    style={{ fontFamily: 'Pretendard' }}
+                  >
+                    투닥이
+                  </span>
+                </div>
+              )}
+
+              {/* 메시지 버블 */}
+              <AiMessageBubble>{message.chat}</AiMessageBubble>
             </div>
           </div>
         );
