@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 
-const CharacterSelectButton = () => {
+const CharacterSelectConfirmButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -22,4 +22,4 @@ const CharacterSelectButton = () => {
   );
 };
 
-export default CharacterSelectButton;
+export default CharacterSelectConfirmButton;

@@ -1,17 +1,14 @@
 import { CardHeader } from '@/components/CardHeader';
-import { CharacterInfo } from '@/modules/characters/ui/components/CharacterInfo';
-import { CharacterSelectField } from '@/modules/characters/ui/components/CharacterSelectField';
-import CharacterSelectConfirmButton from '@/modules/characters/ui/components/CharacterSelectConfirmButton';
 
-function Characters() {
+function CharacterLoadingFallback() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       {/* 전체 컨테이너 */}
       <div className="flex flex-col justify-between items-center gap-[34px] px-4 pt-[60px] pb-[60px]">
         {/* 메인 카드 */}
         <div className="w-full max-w-sm flex flex-col items-center bg-[#DAF1FE] border-2 border-[#7538C5] rounded-[32px] shadow-[4px_4px_4px_0px_rgba(117,56,197,0.25)]">
           {/* 헤더 */}
-          <CardHeader message="캐릭터 선택" />
+          <CardHeader message="로딩중..." />
 
           {/* 바디 */}
           <div className="flex-1 flex flex-col items-center gap-7 px-4 py-5 w-full">
@@ -21,27 +18,31 @@ function Characters() {
                 className="text-[#18181B] text-[26px] font-semibold leading-[1.19] text-center"
                 style={{ fontFamily: 'Pretendard' }}
               >
-                대화를 나눌 친구를
+                투닥이가
                 <br />
-                선택해 주세요
+                편지를 쓰는 중이에요
               </h1>
             </div>
-
-            {/* 캐릭터 선택 섹션 */}
-            <CharacterSelectField />
-
-            {/* 캐릭터 정보 */}
-            <CharacterInfo />
+            <div className="flex flex-col items-center gap-1 w-full">
+              <h1
+                className="text-[#18181B] text-[16px] font-semibold leading-[1.19] text-center"
+                style={{ fontFamily: 'Pretendard' }}
+              >
+                잠시만 기다려주세요
+              </h1>
+            </div>
+            <div className="flex flex-col items-center gap-1 w-full pb-10">
+              <img
+                src="/Group.png"
+                alt="투닥이"
+                className="w-[210px] h-full object-cover"
+              />
+            </div>
           </div>
-        </div>
-
-        {/* 하단 버튼 */}
-        <div className="w-full max-w-sm px-3 pb-0">
-          <CharacterSelectConfirmButton />
         </div>
       </div>
     </div>
   );
 }
 
-export default Characters;
+export default CharacterLoadingFallback;

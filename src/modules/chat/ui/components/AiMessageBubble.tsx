@@ -25,12 +25,12 @@ const AiMessageBubble = ({
 
       {/* 메시지 내용 */}
       <div className="relative z-10 px-6 py-4 pl-5 pr-8 min-h-[88px] flex items-center">
-        <span
+        <div
           className="text-[16px] leading-5 text-[#18181B] font-normal"
-          style={{ fontFamily: 'Pretendard' }}
+          style={{ fontFamily: 'Pretendard', minHeight: '5.5em' }}
         >
           {children}
-        </span>
+        </div>
       </div>
     </div>
   );

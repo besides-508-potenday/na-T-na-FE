@@ -3,6 +3,7 @@ import App from '@/App';
 import Home from './pages/Home';
 import Chat from './pages/Chat';
 import Characters from './pages/Characters';
+import CharacterLoadingFallback from '@/components/CharacterLoadingFallback';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: 'characters',
         element: <Characters />,
+      },
+      {
+        path: 'character-loading',
+        element: <CharacterLoadingFallback />,
       },
     ],
   },

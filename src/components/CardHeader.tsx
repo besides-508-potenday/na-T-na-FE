@@ -6,7 +6,7 @@ import {
 } from '@/assets/icons';
 import { Minus } from 'lucide-react';
 
-export const CardHeader = ({ message }) => {
+export const CardHeader = ({ message }: { message: string }) => {
   return (
     <div className="w-full bg-[#C6CAFE] border-b-2 border-[#7538C5] rounded-t-[30px] px-4 py-3 flex items-center gap-2">
       {/* 좌측 네비게이션 */}
