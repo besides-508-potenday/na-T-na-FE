@@ -1,46 +1,39 @@
-import { CardHeader } from '@/components/CardHeader';
 import { CharacterInfo } from '@/modules/characters/ui/components/CharacterInfo';
 import { CharacterSelectField } from '@/modules/characters/ui/components/CharacterSelectField';
 import CharacterSelectConfirmButton from '@/modules/characters/ui/components/CharacterSelectConfirmButton';
+import LayoutCard from '@/components/LayoutCard';
 
 function Characters() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* 전체 컨테이너 */}
-      <div className="flex flex-col justify-between items-center gap-[34px] px-4 pt-[60px] pb-[60px]">
-        {/* 메인 카드 */}
-        <div className="w-full max-w-sm flex flex-col items-center bg-[#DAF1FE] border-2 border-[#7538C5] rounded-[32px] shadow-[4px_4px_4px_0px_rgba(117,56,197,0.25)]">
-          {/* 헤더 */}
-          <CardHeader message="캐릭터 선택" />
-
-          {/* 바디 */}
-          <div className="flex-1 flex flex-col items-center gap-7 px-4 py-5 w-full">
-            {/* 제목 섹션 */}
-            <div className="flex flex-col items-center gap-1 w-full py-2">
-              <h1
-                className="text-[#18181B] text-[26px] font-semibold leading-[1.19] text-center"
-                style={{ fontFamily: 'Pretendard' }}
-              >
-                대화를 나눌 친구를
-                <br />
-                선택해 주세요
-              </h1>
-            </div>
-
+    <>
+      <LayoutCard headerMessage="캐릭터 선택">
+        {/* 바디 */}
+        <div className="flex-1 flex flex-col items-center gap-7 px-4 py-5 w-full">
+          {/* 제목 섹션 */}
+          <div className="flex flex-col items-center gap-1 w-full py-2">
+            <h1
+              className="text-[#18181B] text-[26px] font-semibold leading-[1.19] text-center"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              대화를 나눌 친구를
+              <br />
+              선택해 주세요
+            </h1>
+          </div>
+          <div className=" pb-5">
             {/* 캐릭터 선택 섹션 */}
             <CharacterSelectField />
-
-            {/* 캐릭터 정보 */}
-            <CharacterInfo />
           </div>
+          {/* 캐릭터 정보 */}
+          <CharacterInfo />
         </div>
 
         {/* 하단 버튼 */}
-        <div className="w-full max-w-sm px-3 pb-0">
+        <div className="w-full max-w-sm px-7 pb-15">
           <CharacterSelectConfirmButton />
         </div>
-      </div>
-    </div>
+      </LayoutCard>
+    </>
   );
 }
 

@@ -98,3 +98,27 @@ export const ArrowIcon = ({ size = 24, fill = 'white' }) => {
     </svg>
   );
 };
+
+export const CornerDownRightIcon = ({ size = 20, fill = '#18181B' }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g transform="translate(3.33, 3.33)">
+        <rect x="0" y="0" width="13.33" height="1.67" fill={fill} />
+        <rect x="0" y="3.33" width="1.67" height="10" fill={fill} />
+        <rect x="1.67" y="1.67" width="1.67" height="1.67" fill={fill} />
+        <rect x="3.33" y="3.33" width="1.67" height="1.67" fill={fill} />
+        <rect x="5" y="5" width="1.67" height="1.67" fill={fill} />
+        <rect x="6.67" y="6.67" width="1.67" height="1.67" fill={fill} />
+        <rect x="8.33" y="8.33" width="1.67" height="1.67" fill={fill} />
+        <rect x="10" y="10" width="1.67" height="1.67" fill={fill} />
+        <rect x="11.67" y="11.67" width="1.67" height="1.67" fill={fill} />
+      </g>
+    </svg>
+  );
+};

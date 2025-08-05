@@ -10,15 +10,15 @@ interface InputFieldProps {
 
 const InputField = ({ message, setMessage, sendMessage }: InputFieldProps) => {
   return (
-    <div className="flex w-full px-2 pb-5">
+    <div className="flex w-full px-1 pb-2">
       <form onSubmit={sendMessage} className="flex justify-between w-full">
         <Input
-          placeholder="안녕 만나서 반가워"
+          placeholder="텍스트 입력"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
-          className="h-10 w-full mx-2 bg-[#C6CAFE]  border border-[#7538C5] text-black text-[9.12px] leading-[1.2] placeholder-black font-normal focus:outline-none"
+          className="w-full h-10 mx-2 bg-white border-[#E4E4E7] border-[3px] text-[#71717A]  font-normal focus:outline-none"
           style={{
-            fontFamily: 'Pretendard',
+            fontFamily: 'DungGeunMo',
           }}
         />
 

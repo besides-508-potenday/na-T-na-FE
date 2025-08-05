@@ -9,12 +9,8 @@ export const CharacterSelectField = () => {
       </button>
 
       {/* 캐릭터 이미지 */}
-      <div className="w-[210px] h-[210px] bg-[#95CDFE] border-[2.625px]  rounded-full flex items-center justify-center overflow-hidden">
-        <img
-          src="/tudak2.png"
-          alt="투닥이"
-          className="w-[230px] h-[210px] object-cover"
-        />
+      <div className="w-[210px] h-[210px] bg-[#EFFFD3] border-[#AAFE75] border-[3px]  rounded-full flex items-center justify-center overflow-hidden">
+        <img src="/tudag.png" alt="투닥이" className=" object-cover" />
       </div>
 
       {/* 오른쪽 화살표 */}

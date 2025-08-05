@@ -1,10 +1,77 @@
-import Intro from '@/modules/home/ui/intro';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
+import Lottie from 'lottie-react';
+
+import animationStart from '../../assets/animations/시작 화면.json';
+import animationTG from '../../assets/animations/T-ㄱ.json';
+import ChatTypingAnimation from '../../assets/animations/chat.json';
+import IntroButton from '@/modules/home/ui/components/IntroButton';
+import LayoutCard from '@/components/LayoutCard';
 
 function Home() {
+  const lottieRef = useRef<any>(null);
+  const navigate = useNavigate();
+  const [step, setStep] = useState<'start' | 'tg' | 'intro'>('start');
+
+  const handleComplete = () => {
+    if (step === 'start') {
+      setStep('tg'); // 다음 애니메이션으로 전환
+    }
+  };
+
+  const handleButtonClick = () => {
+    if (step === 'tg') {
+      setStep('intro'); // 소개 화면으로 전환
+    }
+
+    setTimeout(() => {
+      navigate('/nickname');
+    }, 5000);
+  };
+
+  // intro 화면인 경우
+  if (step === 'intro') {
+    return (
+      <LayoutCard headerMessage="시작중。。。">
+        <div className="flex-1 flex flex-col items-center justify-center gap-12 px-4 pt-24 z-10">
+          {/* 소개 텍스트 */}
+          <div className="text-center">
+            <p
+              className="text-[22px] font-semibold leading-[1.193em] text-[#18181B]"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              F캐릭터와 대화를 나누어 보고 편지를 받아 보세요!
+              <br />
+              F와 난 베프가 될 수 있을까요?
+            </p>
+          </div>
+
+          {/* 채팅 애니메이션 */}
+          <Lottie animationData={ChatTypingAnimation} loop={true} autoplay />
+        </div>
+      </LayoutCard>
+    );
+  }
+
+  // 기본 애니메이션 화면
   return (
-    <>
-      <Intro />
-    </>
+    <LayoutCard headerMessage="시작중。。。">
+      <div className="flex-1 flex items-center justify-center z-10">
+        <Lottie
+          lottieRef={lottieRef}
+          animationData={step === 'start' ? animationStart : animationTG}
+          loop={false}
+          autoplay
+          onComplete={handleComplete}
+        />
+      </div>
+
+      {/* 시작하기 버튼 */}
+      <div className="px-7 pb-13 w-full z-10">
+        <IntroButton onClick={handleButtonClick} />
+      </div>
+    </LayoutCard>
   );
 }
 
