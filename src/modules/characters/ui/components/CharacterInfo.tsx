@@ -21,7 +21,7 @@ export const CharacterInfo = () => {
         >
           이름
         </span>
-        <div className="flex-1 bg-white border-[1.5px] border-[#9E85FD] rounded px-2 py-1">
+        <div className="flex-1 bg-white border-[2px] border-[#9E85FD] rounded px-2 py-1">
           <span
             className="text-[#18181B] text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
@@ -30,7 +30,6 @@ export const CharacterInfo = () => {
           </span>
         </div>
       </div>
-
       {/* 성격 */}
       <div className="flex items-center gap-5 w-full">
         <span
@@ -39,7 +38,7 @@ export const CharacterInfo = () => {
         >
           성격
         </span>
-        <div className="flex-1 bg-white border-[1.5px] border-[#9E85FD] rounded px-2 py-1">
+        <div className="flex-1 bg-white border-[2px] border-[#9E85FD] rounded px-2 py-1">
           <span
             className="text-black text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
@@ -53,6 +52,22 @@ export const CharacterInfo = () => {
                 )}
               </span>
             ))}
+          </span>
+        </div>
+      </div>{' '}
+      <div className="flex items-center gap-5 w-full">
+        <span
+          className="text-[#18181B] text-[32px] leading-[1em] whitespace-nowrap"
+          style={{ fontFamily: 'DungGeunMo' }}
+        >
+          특징
+        </span>
+        <div className="flex-1 bg-white border-[2px] border-[#9E85FD] rounded px-2 py-1">
+          <span
+            className="text-[#18181B] text-lg font-semibold"
+            style={{ fontFamily: 'Pretendard' }}
+          >
+            {selectedCharacter.description}
           </span>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import App from '@/App';
 import Home from './pages/Home';
 import Chat from './pages/Chat';
-// import Characters from './pages/Characters';
+import Characters from './pages/Characters';
 import Nickname from './pages/Nickname';
 // import CharacterLoadingFallback from '@/components/CharacterLoadingFallback';
 import Loading from './pages/Loading';
@@ -20,10 +20,10 @@ export const router = createBrowserRouter([
         path: 'chat',
         element: <Chat />,
       },
-      // {
-      //   path: 'characters',
-      //   element: <Characters />,
-      // },
+      {
+        path: 'characters',
+        element: <Characters />,
+      },
       {
         path: 'nickname',
         element: <Nickname />,

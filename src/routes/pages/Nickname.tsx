@@ -2,12 +2,13 @@ import LayoutCard from '@/components/LayoutCard';
 import NickNameConfirmButton from '@/modules/nickname/components/NickNameConfirmButton';
 import CustomInput from '@/modules/nickname/components/NickNameInput';
 import NicknameConfirmModal from '@/modules/nickname/components/NicknameConfirmModal';
+import { useAppStore } from '@/store';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function Nickname() {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState('');
+  const { nickname, setNickname } = useAppStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleConfirm = () => {

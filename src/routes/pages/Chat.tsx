@@ -10,24 +10,24 @@ function Chat() {
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
 
-  // useEffect(() => {
-  //   socket.on('message', (message) => {
-  //     setMessageList((prev) => prev.concat(message));
-  //   });
-  //   askUserName();
-  // }, []);
+  useEffect(() => {
+    socket.on('message', (message) => {
+      setMessageList((prev) => prev.concat(message));
+    });
+    askUserName();
+  }, []);
 
-  // const askUserName = () => {
-  //   const userName = prompt('Enter your name');
+  const askUserName = () => {
+    const userName = prompt('Enter your name');
 
-  //   console.log('uuu', userName);
+    console.log('uuu', userName);
 
-  //   socket.emit('login', userName, (res: any) => {
-  //     if (res?.ok) {
-  //       setUser(res.data);
-  //     }
-  //   });
-  // };
+    socket.emit('login', userName, (res: any) => {
+      if (res?.ok) {
+        setUser(res.data);
+      }
+    });
+  };
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     socket.emit('sendMessage', message, (res: any) => {
