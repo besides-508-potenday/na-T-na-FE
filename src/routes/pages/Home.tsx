@@ -5,14 +5,16 @@ import Lottie from 'lottie-react';
 
 import animationStart from '../../assets/animations/시작 화면.json';
 import animationTG from '../../assets/animations/T-ㄱ.json';
-import ChatTypingAnimation from '../../assets/animations/chat.json';
+import ChatTypingAnimation from '../../assets/animations/two.json';
 import IntroButton from '@/modules/home/ui/components/IntroButton';
 import LayoutCard from '@/components/LayoutCard';
+import { motion } from 'framer-motion';
 
 function Home() {
   const lottieRef = useRef<any>(null);
   const navigate = useNavigate();
   const [step, setStep] = useState<'start' | 'tg' | 'intro'>('start');
+  const [showIntroText, setShowIntroText] = useState(false); 
 
   const handleComplete = () => {
     if (step === 'start') {
@@ -27,28 +29,48 @@ function Home() {
 
     setTimeout(() => {
       navigate('/nickname');
-    }, 5000);
+    }, 7000);
+  };
+
+
+  const handleChatAnimationComplete = () => {
+    setShowIntroText(true); 
   };
 
   // intro 화면인 경우
   if (step === 'intro') {
     return (
       <LayoutCard headerMessage="시작중。。。">
-        <div className="flex-1 flex flex-col items-center justify-center gap-12 px-4 pt-24 z-10">
-          {/* 소개 텍스트 */}
-          <div className="text-center">
-            <p
-              className="text-[22px] font-semibold leading-[1.193em] text-[#18181B]"
-              style={{ fontFamily: 'Pretendard' }}
-            >
-              F캐릭터와 대화를 나누어 보고 편지를 받아 보세요!
-              <br />
-              F와 난 베프가 될 수 있을까요?
-            </p>
-          </div>
-
+        <div className="flex-1 flex flex-col items-center gap-10 px-4 pt-3z-10">
           {/* 채팅 애니메이션 */}
-          <Lottie animationData={ChatTypingAnimation} loop={true} autoplay />
+          <Lottie
+            animationData={ChatTypingAnimation}
+            loop={false}
+            autoplay
+            onComplete={handleChatAnimationComplete} 
+          />
+
+          {/* 소개 텍스트 - 채팅 애니메이션 완료 후에만 표시 */}
+          {showIntroText && (
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: 'spring', duration: 3 }}
+              className="cursor-pointer"
+            >
+              <div className="text-center">
+                <p
+                  className="text-[34px] font-semibold leading-[1.193em] text-[#18181B]"
+                  style={{ fontFamily: 'Pretendard' }}
+                >
+                  F캐릭터와 대화를 나누어 보고 편지를 받아 보세요!
+                </p>
+                <p className="pt-3 text-[26px] font-semibold leading-[1.193em] text-[#18181B]">
+                  F와 난 베프가 될 수 있을까요?
+                </p>
+              </div>
+            </motion.div>
+          )}
         </div>
       </LayoutCard>
     );

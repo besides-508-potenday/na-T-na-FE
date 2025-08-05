@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import Chat from './pages/Chat';
 import Characters from './pages/Characters';
 import Nickname from './pages/Nickname';
-import CharacterLoadingFallback from '@/components/CharacterLoadingFallback';
+// import CharacterLoadingFallback from '@/components/CharacterLoadingFallback';
+import Loading from './pages/Loading';
 
 export const router = createBrowserRouter([
   {
@@ -28,8 +29,8 @@ export const router = createBrowserRouter([
         element: <Nickname />,
       },
       {
-        path: 'character-loading',
-        element: <CharacterLoadingFallback />,
+        path: 'loading',
+        element: <Loading />,
       },
     ],
   },
