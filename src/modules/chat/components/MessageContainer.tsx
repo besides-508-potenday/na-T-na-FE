@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { cn } from '@/lib/utils';
-import { useEffect, useRef } from 'react';
-import MyMessageBubble from '../ui/components/MyMessageBubble';
-import AiMessageBubble from '../ui/components/AiMessageBubble';
+import { cn } from "@/lib/utils";
+import { useEffect, useRef } from "react";
+import MyMessageBubble from "../ui/components/MyMessageBubble";
+import AiMessageBubble from "../ui/components/AiMessageBubble";
 
 interface MessageContainerProps {
   messageList: any[];
@@ -13,7 +13,7 @@ const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -23,15 +23,16 @@ const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
   return (
     <div className="h-full overflow-y-auto space-y-4">
       {messageList.map((message, index) => {
-        const isSystem = message.user.name === 'system';
-        const isMyMessage = message.user.name === user.name;
+        const userName = message?.user?.name;
+        const isSystem = userName === "system";
+        const isMyMessage = userName === user?.name;
         const isOtherMessage = !isSystem && !isMyMessage;
 
         const showAvatar =
           isOtherMessage &&
           (index === 0 ||
-            messageList[index - 1].user.name === user.name ||
-            messageList[index - 1].user.name === 'system');
+            messageList[index - 1].user?.name === user?.name ||
+            messageList[index - 1].user?.name === "system");
 
         if (isSystem) {
           return (
@@ -60,8 +61,8 @@ const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
             <div className="flex flex-col items-center">
               <div
                 className={cn(
-                  'w-7 h-7 rounded-full bg-[#95CDFE] border border-[#2C55C7] flex items-center justify-center',
-                  !showAvatar && 'invisible'
+                  "w-7 h-7 rounded-full bg-[#95CDFE] border border-[#2C55C7] flex items-center justify-center",
+                  !showAvatar && "invisible"
                 )}
               >
                 <img
@@ -79,7 +80,7 @@ const MessageContainer = ({ messageList, user }: MessageContainerProps) => {
                 <div className="px-1 mb-1">
                   <span
                     className="text-xs font-semibold text-black"
-                    style={{ fontFamily: 'Pretendard' }}
+                    style={{ fontFamily: "Pretendard" }}
                   >
                     투닥이
                   </span>

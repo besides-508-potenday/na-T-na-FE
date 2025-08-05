@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
-import socket from '@/server';
-import InputField from '@/modules/chat/components/InputField';
-import MessageContainer from '@/modules/chat/components/MessageContainer';
-import { CardHeader } from '@/components/CardHeader';
+import { useEffect, useState } from "react";
+import socket from "@/server";
+import InputField from "@/modules/chat/components/InputField";
+import MessageContainer from "@/modules/chat/components/MessageContainer";
+import { CardHeader } from "@/components/CardHeader";
 
 function Chat() {
   const [user, setUser] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    socket.on('message', (message) => {
+    socket.on("message", (message) => {
       setMessageList((prev) => prev.concat(message));
     });
     askUserName();
   }, []);
 
   const askUserName = () => {
-    const userName = prompt('Enter your name');
+    const userName = prompt("Enter your name");
 
-    console.log('uuu', userName);
+    console.log("uuu", userName);
 
-    socket.emit('login', userName, (res: any) => {
+    socket.emit("join_room", userName, (res: any) => {
       if (res?.ok) {
         setUser(res.data);
       }
@@ -30,10 +30,10 @@ function Chat() {
   };
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    socket.emit('sendMessage', message, (res: any) => {
-      console.log('send message response', res);
+    socket.emit("send_message", message, (res: any) => {
+      console.log("send message response", res);
     });
-    setMessage('');
+    setMessage("");
   };
 
   return (
