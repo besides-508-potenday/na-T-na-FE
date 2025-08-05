@@ -1,4 +1,16 @@
+import { useAppStore } from '@/store';
+
 export const CharacterInfo = () => {
+  const { selectedCharacter } = useAppStore();
+
+  if (!selectedCharacter) {
+    return (
+      <div className="flex flex-col items-center gap-3 px-4 w-full">
+        <div className="text-center text-gray-500">캐릭터를 선택해주세요</div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center gap-3 px-4 w-full">
       {/* 이름 */}
@@ -14,7 +26,7 @@ export const CharacterInfo = () => {
             className="text-[#18181B] text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
           >
-            투닥이
+            {selectedCharacter.name}
           </span>
         </div>
       </div>
@@ -32,9 +44,15 @@ export const CharacterInfo = () => {
             className="text-black text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
           >
-            소심함, 감정 과몰입,
-            <br />
-            인정 욕구, 관계 중심 정서
+            {selectedCharacter.personality.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                {index <
+                  selectedCharacter.personality.split('\n').length - 1 && (
+                  <br />
+                )}
+              </span>
+            ))}
           </span>
         </div>
       </div>

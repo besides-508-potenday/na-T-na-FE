@@ -122,6 +122,75 @@ export const CornerDownRightIcon = ({ size = 20, fill = '#18181B' }) => {
     </svg>
   );
 };
+
+export const DeleteInputIcon = ({ size = 25 }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 25 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g filter="url(#filter0_i_489_14306)">
+        <mask id="path-1-inside-1_489_14306" fill="white">
+          <path d="M0.5 12C0.5 5.37258 5.87258 0 12.5 0C19.1274 0 24.5 5.37258 24.5 12C24.5 18.6274 19.1274 24 12.5 24C5.87258 24 0.5 18.6274 0.5 12Z" />
+        </mask>
+        <path
+          d="M0.5 12C0.5 5.37258 5.87258 0 12.5 0C19.1274 0 24.5 5.37258 24.5 12C24.5 18.6274 19.1274 24 12.5 24C5.87258 24 0.5 18.6274 0.5 12Z"
+          fill="#E4E4E7"
+        />
+        <path
+          d="M0.5 0H24.5H0.5ZM24.5 12.75C24.5 19.7916 18.7916 25.5 11.75 25.5C4.70837 25.5 -1 19.7916 -1 12.75L2 12C2 17.799 6.70101 22.5 12.5 22.5C19.1274 22.5 24.5 17.799 24.5 12V12.75ZM11.75 25.5C4.70837 25.5 -1 19.7916 -1 12.75C-1 5.70837 4.70837 0 11.75 0H12.5C6.70101 0 2 5.37258 2 12C2 17.799 6.70101 22.5 12.5 22.5L11.75 25.5ZM24.5 0V24V0Z"
+          fill="#A1A1AA"
+          mask="url(#path-1-inside-1_489_14306)"
+        />
+        <path
+          d="M9.16626 16.667H7.83325V15.333H9.16626V16.667ZM17.1663 16.667H15.8333V15.333H17.1663V16.667ZM10.5002 14V15.333H9.16626V14H10.5002ZM15.8333 15.333H14.5002V14H15.8333V15.333ZM11.8333 14H10.5002V12.667H11.8333V14ZM14.5002 14H13.1663V12.667H14.5002V14ZM13.1663 12.667H11.8333V11.333H13.1663V12.667ZM11.8333 11.333H10.5002V10H11.8333V11.333ZM14.5002 11.333H13.1663V10H14.5002V11.333ZM10.5002 10H9.16626V8.66699H10.5002V10ZM15.8333 10H14.5002V8.66699H15.8333V10ZM9.16626 8.66699H7.83325V7.33301H9.16626V8.66699ZM17.1663 8.66699H15.8333V7.33301H17.1663V8.66699Z"
+          fill="#18181B"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_i_489_14306"
+          x="-0.1"
+          y="0"
+          width="24.6"
+          height="24.6"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dx="-1.2" dy="1.2" />
+          <feGaussianBlur stdDeviation="0.3" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="shape"
+            result="effect1_innerShadow_489_14306"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
+
 export const PencilIcon = ({ size = 26 }) => {
   return (
     <svg

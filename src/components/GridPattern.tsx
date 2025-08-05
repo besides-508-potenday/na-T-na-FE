@@ -1,7 +1,7 @@
 // 격자 패턴 SVG 컴포넌트
 export const GridPattern = () => (
   <svg
-    className="absolute inset-0 w-full h-full opacity-[0.5] z-0"
+    className="absolute inset-0 w-full h-full opacity-[0.9] z-0"
     style={{ top: '-153px', left: '-153px', width: '634px', height: '900px' }}
   >
     <defs>
@@ -9,7 +9,7 @@ export const GridPattern = () => (
         <path
           d="M 50 0 L 0 0 0 50"
           fill="none"
-          stroke="#95CDFE"
+          stroke="#EFF8FF"
           strokeWidth="3"
         />
       </pattern>

@@ -14,40 +14,38 @@ function Home() {
   const lottieRef = useRef<any>(null);
   const navigate = useNavigate();
   const [step, setStep] = useState<'start' | 'tg' | 'intro'>('start');
-  const [showIntroText, setShowIntroText] = useState(false); 
+  const [showIntroText, setShowIntroText] = useState(false);
 
   const handleComplete = () => {
     if (step === 'start') {
-      setStep('tg'); // 다음 애니메이션으로 전환
+      setStep('tg');
     }
   };
 
   const handleButtonClick = () => {
     if (step === 'tg') {
-      setStep('intro'); // 소개 화면으로 전환
+      setStep('intro'); 
     }
-
-    setTimeout(() => {
-      navigate('/nickname');
-    }, 7000);
   };
-
 
   const handleChatAnimationComplete = () => {
-    setShowIntroText(true); 
+    setShowIntroText(true);
+    setTimeout(() => {
+      navigate('/nickname');
+    }, 4000);
   };
 
-  // intro 화면인 경우
+
   if (step === 'intro') {
     return (
       <LayoutCard headerMessage="시작중。。。">
-        <div className="flex-1 flex flex-col items-center gap-10 px-4 pt-3z-10">
+        <div className="flex-1 flex flex-col items-center gap-10 px-4 pt-3 z-10">
           {/* 채팅 애니메이션 */}
           <Lottie
             animationData={ChatTypingAnimation}
             loop={false}
             autoplay
-            onComplete={handleChatAnimationComplete} 
+            onComplete={handleChatAnimationComplete}
           />
 
           {/* 소개 텍스트 - 채팅 애니메이션 완료 후에만 표시 */}
