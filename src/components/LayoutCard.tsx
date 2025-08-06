@@ -5,11 +5,11 @@ import { GridPattern } from './GridPattern';
 export default function LayoutCard({
   children,
   headerMessage,
-  color = 'default',
+  bgColor = '#FFFFFF',
 }: {
   children: React.ReactNode;
   headerMessage: string;
-  color?: string;
+  bgColor?: string;
 }) {
   return (
     <div className="w-full h-full">
@@ -29,8 +29,8 @@ export default function LayoutCard({
           {/* Body */}
           <div className="flex-1 w-full px-2.5">
             <div
-              className="w-full h-full bg-white rounded-t-[4px] rounded-b-[24px] border-[4px] relative overflow-hidden flex flex-col justify-between items-center"
-              style={{ borderColor: '#FC89BA' }}
+              className="w-full h-full rounded-t-[4px] rounded-b-[24px] border-[4px] relative overflow-hidden flex flex-col justify-between items-center"
+              style={{ borderColor: '#FC89BA', backgroundColor: bgColor }}
             >
               {/* 격자 패턴 배경 */}
               <GridPattern />
