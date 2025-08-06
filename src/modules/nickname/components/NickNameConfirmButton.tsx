@@ -2,9 +2,29 @@ import { StepIcon } from '@/assets/icons';
 
 interface IntroButtonProps {
   onClick?: () => void;
+  nickname: string;
 }
 
-export default function NickNameConfirmButton({ onClick }: IntroButtonProps) {
+export default function NickNameConfirmButton({
+  onClick,
+  nickname,
+}: IntroButtonProps) {
+  if (nickname === '') {
+    return (
+      <button
+        onClick={onClick}
+        className="w-full bg-[#E4E4E7] border-l-[3px] border-b-[3px] border-[#D4D4D8] rounded-md px-5 py-4 flex items-center gap-1 shadow-[inset_-2px_2px_1px_0px_rgba(255,255,255,0.4)] transition-all duration-200 border-r-[1px] "
+      >
+        <StepIcon size={24} fill="#71717A" />
+        <span
+        className="flex-1 text-[24px] font-normal text-[#71717A] text-center"
+        style={{ fontFamily: 'DungGeunMo' }}
+      >
+        완료?
+      </span>
+      </button>
+    );
+  }
   return (
     <button
       onClick={onClick}

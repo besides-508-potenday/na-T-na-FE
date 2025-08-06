@@ -29,7 +29,7 @@ function Characters() {
         </div>
 
         {/* 하단 버튼 */}
-        <div className="w-full max-w-sm px-7 pb-15">
+        <div className="w-full max-w-sm px-7 pb-13">
           <CharacterSelectConfirmButton />
         </div>
       </LayoutCard>

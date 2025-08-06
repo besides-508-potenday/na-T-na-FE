@@ -22,7 +22,6 @@ export default function Nickname() {
 
   const handleModalConfirm = () => {
     setIsModalOpen(false);
-    // 여기에 다음 페이지로 이동하는 로직을 추가할 수 있습니다
     navigate('/characters');
   };
 
@@ -59,7 +58,7 @@ export default function Nickname() {
               onChange={(e) => setNickname(e.target.value)}
             />
           </div>
-          <NickNameConfirmButton onClick={handleConfirm} />
+          <NickNameConfirmButton nickname={nickname} onClick={handleConfirm} />
         </div>
       </LayoutCard>
 
