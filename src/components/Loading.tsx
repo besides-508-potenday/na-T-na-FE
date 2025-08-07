@@ -1,10 +1,21 @@
 import LayoutCard from '@/components/LayoutCard';
 import { PencilIcon } from '@/assets/pictures';
+import { useEffect, useState } from 'react';
 function Loading() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = ['/로딩중 캐릭터 2.png', '/로딩중 캐릭터.png'];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <LayoutCard headerMessage="편지지 생성중。。。">
       <div className="flex-1 flex flex-col justify-center items-center gap-10 px-4 z-10">
-        {/* 소개 텍스트 */}
         <div className="text-center">
           <p
             className="text-[26px] font-semibold leading-[1.193em] text-[#18181B] flex flex-col justify-center gap-2"
@@ -22,9 +33,11 @@ function Loading() {
             잠시만 기다려주세요...
           </p>
         </div>
-
-        {/* 채팅 애니메이션 */}
-        <img src={'/loading.png'} alt="loading" />
+        <img
+          src={images[currentImageIndex]}
+          alt="loading"
+          className="transition-opacity duration-300 ease-in-out"
+        />
       </div>
     </LayoutCard>
   );
