@@ -10,7 +10,7 @@ export function ChatBubbleLetter({
   letterContent,
 }: ChatBubbleLetterProps) {
   return (
-    <div className="relative flex flex-col items-stretch gap-2.5 py-3 pl-2 pr-5 w-full max-w-[350px]">
+    <div className="relative flex flex-col items-stretch gap-2.5 py-3 pl-3 pr-6 w-full max-w-[350px]">
       {/* 메인 말풍선 */}
       <div
         className="relative flex flex-col items-center gap-2 px-4 pt-4 pb-0  border-2 shadow-sm"

@@ -1,5 +1,6 @@
 import { CustomScrollArea, CustomScrollBar } from '@/components/ui/scroll-area';
 import { ChatBubbleLetter } from './ChatBubbleLetter';
+import { Distance } from './Distance';
 
 export function LetterPage({ children }: { children: React.ReactNode }) {
   return (
@@ -18,13 +19,15 @@ export function LetterPage({ children }: { children: React.ReactNode }) {
           *받는 사람*: 사용자 네임
         </div>
       </div>
-      <div className="w-full flex justify-center mb-6">
+      <div className="w-full flex justify-center mb-6 pr-8">
         <img
           src="/투닥이2.png"
           alt="투닥이"
           className="w-full max-w-[210px] h-auto"
         />
       </div>
+
+      <Distance />
       <ChatBubbleLetter
         userName="John"
         chatbotName="Jane"
