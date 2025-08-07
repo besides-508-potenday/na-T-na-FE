@@ -11,6 +11,19 @@ export default function Nickname() {
   const { nickname, setNickname } = useAppStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // 닉네임 유효성 검사
+  const isNicknameValid =
+    nickname.trim().length >= 2 && nickname.trim().length <= 10;
+  const hasError = nickname.trim().length > 0 && !isNicknameValid;
+
+  // 에러 메시지 설정
+  const getErrorMessage = () => {
+    if (nickname.trim().length === 0) return '';
+    if (nickname.trim().length < 2) return '닉네임은 2자 이상이어야 합니다.';
+    if (nickname.trim().length > 10) return '닉네임은 10자 이하여야 합니다.';
+    return '';
+  };
+
   const handleConfirm = () => {
     if (nickname.trim()) {
       setIsModalOpen(true);
@@ -51,14 +64,18 @@ export default function Nickname() {
             {' '}
             <CustomInput
               placeholder="닉네임을 입력하세요"
-              error={false}
-              errorMessage={'errorMessage'}
+              error={hasError}
+              errorMessage={getErrorMessage()}
               nickname={nickname}
               handleClear={handleClear}
               onChange={(e) => setNickname(e.target.value)}
             />
           </div>
-          <NickNameConfirmButton nickname={nickname} onClick={handleConfirm} />
+          <NickNameConfirmButton
+            nickname={nickname}
+            onClick={handleConfirm}
+            error={hasError}
+          />
         </div>
       </LayoutCard>
 

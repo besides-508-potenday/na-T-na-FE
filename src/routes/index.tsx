@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Chat from './pages/Chat';
 import Characters from './pages/Characters';
 import Nickname from './pages/Nickname';
-// import CharacterLoadingFallback from '@/components/CharacterLoadingFallback';
+
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import Result from './pages/Result';

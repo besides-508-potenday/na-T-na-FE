@@ -1,5 +1,5 @@
 import LayoutCard from '@/components/LayoutCard';
-import { PencilIcon } from '@/assets/icons';
+import { PencilIcon } from '@/assets/pictures';
 function Loading() {
   return (
     <LayoutCard headerMessage="편지지 생성중。。。">

@@ -18,7 +18,8 @@ function Error() {
             className="text-[28px] font-semibold leading-[1.193em] text-[#18181B] flex flex-col justify-center gap-2"
             style={{ fontFamily: 'Pretendard' }}
           >
-            찾을 수 없는 페이지입니다.
+            앗, 문제가 생겼어요.
+            <br />   다시 시도해주세요..!
           </p>
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FullHeartIcon, DeadHeartIcon } from '../../../assets/icons';
+import { FullHeartIcon, DeadHeartIcon } from '../../../assets/pictures';
 
 interface HeartBarProps {
   currentHearts: number; // 현재 하트 개수 (0-10)
