@@ -7,6 +7,7 @@ import Nickname from './pages/Nickname';
 // import CharacterLoadingFallback from '@/components/CharacterLoadingFallback';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
+import Result from './pages/Result';
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: 'error',
         element: <Error />,
+      },
+      {
+        path: 'result',
+        element: <Result />,
       },
     ],
   },
