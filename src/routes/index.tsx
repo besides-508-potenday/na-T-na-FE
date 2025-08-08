@@ -30,6 +30,12 @@ export const router = createBrowserRouter([
         path: 'nickname',
         element: <Nickname />,
       },
+
+      {
+        path: 'result',
+        element: <Result />,
+      },
+      //테스트용 페이지
       {
         path: 'loading',
         element: <Loading />,
@@ -37,10 +43,6 @@ export const router = createBrowserRouter([
       {
         path: 'error',
         element: <Error />,
-      },
-      {
-        path: 'result',
-        element: <Result />,
       },
     ],
   },
