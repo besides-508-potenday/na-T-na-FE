@@ -1,7 +1,11 @@
 import { useAppStore } from '@/store';
+import { useCharacterById } from '@/hooks/useCharacters';
 
 export const CharacterInfo = () => {
-  const { selectedCharacter } = useAppStore();
+  const { selectedChatbotId } = useAppStore();
+  const { data: selectedCharacter } = useCharacterById(
+    selectedChatbotId || undefined
+  );
 
   if (!selectedCharacter) {
     return (
@@ -26,7 +30,7 @@ export const CharacterInfo = () => {
             className="text-[#18181B] text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
           >
-            {selectedCharacter.name}
+            {selectedCharacter.chatbot_name}
           </span>
         </div>
       </div>
@@ -43,15 +47,16 @@ export const CharacterInfo = () => {
             className="text-black text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
           >
-            {selectedCharacter.personality.split('\n').map((line, index) => (
-              <span key={index}>
-                {line}
-                {index <
-                  selectedCharacter.personality.split('\n').length - 1 && (
-                  <br />
-                )}
-              </span>
-            ))}
+            {selectedCharacter.chatbot_personalities
+              .split('\n')
+              .map((line, index) => (
+                <span key={index}>
+                  {line}
+                  {index <
+                    selectedCharacter.chatbot_personalities.split('\n').length -
+                      1 && <br />}
+                </span>
+              ))}
           </span>
         </div>
       </div>{' '}
@@ -67,7 +72,7 @@ export const CharacterInfo = () => {
             className="text-[#18181B] text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
           >
-            {selectedCharacter.description}
+            {selectedCharacter.chatbot_speciality}
           </span>
         </div>
       </div>

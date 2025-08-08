@@ -1,9 +1,9 @@
 import LayoutCard from '@/components/LayoutCard';
-
+import { PencilIcon } from '@/assets/pictures';
 import { useEffect, useState } from 'react';
-function Loading() {
+function FallbackWritting() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = ['/캐릭터_ 투닥이.png', '/캐릭터_ 투닥이 (1).png'];
+  const images = ['/로딩중 캐릭터 2.png', '/로딩중 캐릭터.png'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,14 +14,19 @@ function Loading() {
   }, [images.length]);
 
   return (
-    <LayoutCard headerMessage="로딩중。。。">
+    <LayoutCard headerMessage="편지지 생성중。。。">
       <div className="flex-1 flex flex-col justify-center items-center gap-10 px-4 z-10">
         <div className="text-center">
           <p
             className="text-[26px] font-semibold leading-[1.193em] text-[#18181B] flex flex-col justify-center gap-2"
             style={{ fontFamily: 'Pretendard' }}
           >
-            로딩 중이에요...
+            투닥이가
+            <br />
+            <span className="flex items-center gap-2">
+              편지를 쓰는 중이에요
+              <PencilIcon />
+            </span>
           </p>
 
           <p className="pt-3 text-[22px] font-semibold leading-[1.193em] text-[#71717A]">
@@ -38,4 +43,4 @@ function Loading() {
   );
 }
 
-export default Loading;
+export default FallbackWritting;

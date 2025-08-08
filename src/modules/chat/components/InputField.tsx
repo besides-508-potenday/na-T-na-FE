@@ -16,7 +16,7 @@ const InputField = ({ message, setMessage, sendMessage }: InputFieldProps) => {
           placeholder="텍스트 입력"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
-          className="w-full h-[44px] mx-2 bg-white border-[#E4E4E7] border-[3px] text-[#71717A] font-normal focus:outline-none focus:border-[#E4E4E7] focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="w-full h-[44px] mx-2 bg-white border-[#E4E4E7] border-[2px] text-[#71717A] font-normal focus:outline-none focus:border-[#E4E4E7] focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
           style={{
             fontFamily: 'DungGeunMo',
           }}
@@ -25,7 +25,7 @@ const InputField = ({ message, setMessage, sendMessage }: InputFieldProps) => {
         <Button
           disabled={message === ''}
           type="submit"
-          className="w-[44px] h-[44px] rounded-full bg-[#FF5D94] hover:bg-[#E54B85] disabled:opacity-50  flex items-center justify-center border-none"
+          className="w-[44px] h-[44px] rounded-full cursor-pointer bg-[#FF5D94] hover:bg-[#E54B85] disabled:opacity-50  flex items-center justify-center border-none"
         >
           <ArrowIcon size={24} fill="white" />
         </Button>

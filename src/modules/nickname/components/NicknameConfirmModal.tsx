@@ -54,7 +54,7 @@ export default function NicknameConfirmModal({
               <div className="flex gap-3 px-3">
                 <button
                   onClick={onCancel}
-                  className="flex-1 bg-[#95CDFE] border-l-[2px] border-b-[2px] border-[#2C55C7] rounded-md px-3 py-4 flex items-center justify-center gap-1 shadow-[inset_-2px_2px_1px_0px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-[#759CFE]  active:bg-[#2C55C7] active:translate-x-0.5 active:translate-y-0.5 active:border-r-[1px] active:border-b-[1px]"
+                  className="flex-1 bg-[#95CDFE] border-l-[2px] cursor-pointer border-b-[2px] border-[#2C55C7] rounded-md px-3 py-4 flex items-center justify-center gap-1 shadow-[inset_-2px_2px_1px_0px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-[#759CFE]  active:bg-[#2C55C7] active:translate-x-0.5 active:translate-y-0.5 active:border-r-[1px] active:border-b-[1px]"
                 >
                   <StepIcon size={20} fill="#18181B" />
                   <span
@@ -67,7 +67,7 @@ export default function NicknameConfirmModal({
 
                 <button
                   onClick={onConfirm}
-                  className="flex-1 bg-[#FC89BA] border-l-[2px] border-b-[2px] border-[#FF5D94] rounded-md px-3 py-4 flex items-center justify-center gap-1 shadow-[inset_-2px_2px_1px_0px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-[#FF72AE] active:bg-[#FF4282] active:translate-x-0.5 active:translate-y-0.5 active:border-r-[1px] active:border-b-[1px]"
+                  className="flex-1 bg-[#FC89BA] border-l-[2px] cursor-pointer border-b-[2px] border-[#FF5D94] rounded-md px-3 py-4 flex items-center justify-center gap-1 shadow-[inset_-2px_2px_1px_0px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-[#FF72AE] active:bg-[#FF4282] active:translate-x-0.5 active:translate-y-0.5 active:border-r-[1px] active:border-b-[1px]"
                 >
                   <StepIcon size={20} fill="#18181B" />
                   <span

@@ -1,22 +1,26 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@/assets/icons';
 import { useAppStore } from '@/store';
+import { useCharacters } from '@/hooks/useCharacters';
 import { useState, useEffect } from 'react';
 
 export const CharacterSelectField = () => {
-  const { characters, selectedCharacter, setSelectedCharacter } = useAppStore();
+  const { data: characters } = useCharacters();
+  const { selectedChatbotId, setSelectedChatbotId } = useAppStore();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // 선택된 캐릭터에 따라 현재 인덱스 업데이트
+  // 선택된 캐릭터 ID에 따라 현재 인덱스 업데이트
   useEffect(() => {
-    if (selectedCharacter) {
+    if (selectedChatbotId && characters) {
       const index = characters.findIndex(
-        (char) => char.id === selectedCharacter.id
+        (char) => char.chatbot_id === selectedChatbotId
       );
       if (index !== -1) {
         setCurrentIndex(index);
       }
     }
-  }, [selectedCharacter, characters]);
+  }, [selectedChatbotId, characters]);
+
+  if (!characters || characters.length === 0) return null;
 
   const currentCharacter = characters[currentIndex];
 
@@ -24,22 +28,15 @@ export const CharacterSelectField = () => {
     const newIndex =
       currentIndex > 0 ? currentIndex - 1 : characters.length - 1;
     setCurrentIndex(newIndex);
-    setSelectedCharacter(characters[newIndex]);
+    setSelectedChatbotId(characters[newIndex].chatbot_id);
   };
 
   const handleNext = () => {
     const newIndex =
       currentIndex < characters.length - 1 ? currentIndex + 1 : 0;
     setCurrentIndex(newIndex);
-    setSelectedCharacter(characters[newIndex]);
+    setSelectedChatbotId(characters[newIndex].chatbot_id);
   };
-
-  // 초기 캐릭터 선택
-  useEffect(() => {
-    if (!selectedCharacter && characters.length > 0) {
-      setSelectedCharacter(characters[0]);
-    }
-  }, [selectedCharacter, characters, setSelectedCharacter]);
 
   if (!currentCharacter) return null;
 
@@ -60,8 +57,8 @@ export const CharacterSelectField = () => {
       {/* 캐릭터 이미지 */}
       <div className="w-[210px] h-[210px] bg-[#EFFFD3] border-[#AAFE75] border-[3px]  rounded-full flex items-center justify-center overflow-hidden">
         <img
-          src={currentCharacter.image}
-          alt={currentCharacter.name}
+          src={`/${currentCharacter.chatbot_profile_image}`}
+          alt={currentCharacter.chatbot_name}
           className=" object-cover"
         />
       </div>

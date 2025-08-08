@@ -45,7 +45,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
         <div className="relative">
           <input
             className={cn(
-              'flex h-10 w-full rounded-[10px] border-[5px] bg-background px-3 py-6 text-[24px] ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 transition-colors',
+              'flex h-10 w-full rounded-[10px] border-[2px] bg-background px-3 py-6 text-[24px] ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#A1A1AA] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 transition-colors',
               getBorderColor()
             )}
             ref={ref}
@@ -60,7 +60,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             <button
               type="button"
               onClick={handleClear}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
             >
               <DeleteInputIcon />
             </button>

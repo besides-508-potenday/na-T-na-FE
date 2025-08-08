@@ -24,7 +24,7 @@ function Home() {
 
   const handleButtonClick = () => {
     if (step === 'tg') {
-      setStep('intro'); 
+      setStep('intro');
     }
   };
 
@@ -35,11 +35,10 @@ function Home() {
     }, 4000);
   };
 
-
   if (step === 'intro') {
     return (
       <LayoutCard headerMessage="시작중。。。">
-        <div className="flex-1 flex flex-col items-center gap-10 px-4 pt-3 z-10">
+        <div className="flex-1 flex flex-col items-center px-4 pt-5 z-10">
           {/* 채팅 애니메이션 */}
           <Lottie
             animationData={ChatTypingAnimation}
@@ -54,7 +53,7 @@ function Home() {
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ type: 'spring', duration: 3 }}
-              className="cursor-pointer"
+          
             >
               <div className="text-center">
                 <p
@@ -63,7 +62,7 @@ function Home() {
                 >
                   F캐릭터와 대화를 나누어 보고 편지를 받아 보세요!
                 </p>
-                <p className="pt-3 text-[26px] font-semibold leading-[1.193em] text-[#18181B]">
+                <p className="pt-3 text-[26px] font-semibold leading-[1.193em] text-[#71717A]">
                   F와 난 베프가 될 수 있을까요?
                 </p>
               </div>

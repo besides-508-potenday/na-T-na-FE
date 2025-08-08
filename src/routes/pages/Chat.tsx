@@ -4,13 +4,15 @@ import socket from '@/server';
 import InputField from '@/modules/chat/components/InputField';
 import MessageContainer from '@/modules/chat/components/MessageContainer';
 import LayoutCard from '@/components/LayoutCard';
+import { useAppStore } from '@/store';
 
 function Chat() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [currentHearts, setCurrentHearts] = useState(7); // 하트 상태 관리
-
+  const { nickname, selectedChatbotId } = useAppStore();
+  console.log('nickname', nickname, selectedChatbotId);
   useEffect(() => {
     socket.on('message', (message) => {
       setMessageList((prev) => prev.concat(message));

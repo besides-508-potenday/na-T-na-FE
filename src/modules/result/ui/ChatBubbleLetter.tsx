@@ -45,7 +45,7 @@ export function ChatBubbleLetter({
 
           {/* 서명 */}
           <p
-            className="w-full text-right font-medium leading-5"
+            className="w-full text-right font-medium leading-5 pb-3"
             style={{
               fontFamily: 'Pretendard',
               color: '#18181B',

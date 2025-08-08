@@ -31,7 +31,7 @@ const CustomScrollBar = React.forwardRef<
         ref={ref}
         orientation={orientation}
         className={cn(
-          'flex touch-none p-px transition-colors select-none',
+          'flex touch-none p-px transition-colors  select-none',
           'h-2.5 flex-col border-t border-t-transparent',
           className
         )}
@@ -53,7 +53,7 @@ const CustomScrollBar = React.forwardRef<
       orientation={orientation}
       className={cn(
         'relative flex touch-none select-none transition-colors',
-        'h-full w-[21px] bg-[#A2B3D9] rounded-[5.71px] p-[2.57px]',
+        'h-full w-[21px] bg-[#A2B3D9] rounded-[5.71px] p-[2.57px] cursor-pointer',
         className
       )}
       style={{
@@ -65,7 +65,7 @@ const CustomScrollBar = React.forwardRef<
       {/* 위로 스크롤 버튼: padding 영역에 절대 위치로 배치 */}
       <button
         onClick={() => handleScroll('up')}
-        className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center w-[16.28px] h-[16.28px] bg-[#C2D4FC] rounded-[5px] border-[1.42px] border-white"
+        className="absolute left-1/2 -translate-x-1/2 flex cursor-pointer items-center justify-center w-[16.28px] h-[16.28px] bg-[#C2D4FC] rounded-[5px] border-[1.42px] border-white"
         style={{ top: `${containerPadding}px` }}
         aria-label="Scroll up"
       >
@@ -78,7 +78,7 @@ const CustomScrollBar = React.forwardRef<
       {/* 아래로 스크롤 버튼: padding 영역에 절대 위치로 배치 */}
       <button
         onClick={() => handleScroll('down')}
-        className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center w-[16.28px] h-[16.28px] bg-[#C2D4FC] rounded-[5px] border-[1.42px] border-white"
+        className="absolute left-1/2 -translate-x-1/2 flex cursor-pointer items-center justify-center w-[16.28px] h-[16.28px] bg-[#C2D4FC] rounded-[5px] border-[1.42px] border-white"
         style={{ bottom: `${containerPadding}px` }}
         aria-label="Scroll down"
       >
@@ -119,7 +119,9 @@ const CustomScrollArea = React.forwardRef<
       </ScrollAreaPrimitive.Viewport>
       {/* 분리된 스크롤바에 viewportRef를 주입하여 클론합니다. */}
       {scrollBar &&
-        React.cloneElement(scrollBar as React.ReactElement<any>, { viewportRef })}
+        React.cloneElement(scrollBar as React.ReactElement<any>, {
+          viewportRef,
+        })}
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
   );

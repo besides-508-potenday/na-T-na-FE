@@ -1,18 +1,23 @@
 import { StepIcon } from '@/assets/icons';
+import { useCharacterById } from '@/hooks/useCharacters';
 import { useAppStore } from '@/store';
 import { useNavigate } from 'react-router';
 
 const CharacterSelectConfirmButton = () => {
   const navigate = useNavigate();
-  const { selectedCharacter } = useAppStore();
+  const { selectedChatbotId } = useAppStore();
+  const { data: selectedCharacter } = useCharacterById(
+    selectedChatbotId || undefined
+  );
 
+  console.log('selectedCharacter', selectedCharacter?.is_unknown);
   const handleClick = () => {
-    if (selectedCharacter) {
+    if (selectedChatbotId) {
       navigate('/chat');
     }
   };
 
-  const isDisabled = !selectedCharacter;
+  const isDisabled = !selectedCharacter || selectedCharacter?.is_unknown;
 
   return (
     <button
@@ -28,11 +33,11 @@ const CharacterSelectConfirmButton = () => {
 
       <span
         className={`text-[24px] leading-[1em] font-normal text-center ${
-          isDisabled ? 'text-gray-500' : 'text-[#18181B]'
+          isDisabled ? 'text-gray-500 pl-12' : 'text-[#18181B] pl-2'
         }`}
         style={{ fontFamily: 'DungGeunMo' }}
       >
-        이 친구랑 대화할래요
+        {isDisabled ? 'Comming Soon!' : '이 친구랑 대화할래요'}
       </span>
     </button>
   );
