@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from 'react-router';
 function App() {
   const navigate = useNavigate();
   const handleResultClick = () => {
-    navigate('/result');
+    navigate('/result/1');
   };
   const handleErrorClick = () => {
     navigate('/error');

@@ -1,4 +1,4 @@
-import type { Character } from '@/types';
+import type { Character, LetterData } from '@/types';
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -22,6 +22,21 @@ export const fetchCharacters = async (): Promise<Character[]> => {
   const data: ApiResponse = await response.json();
 
   return data.data.chatbots;
+};
+
+export const fetchLetterData = async (
+  chatroom_id: string
+): Promise<LetterData> => {
+  const response = await fetch(`${API_BASE_URL}/api/letters/${chatroom_id}`);
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch letter: ${response.status} ${response.statusText}`
+    );
+  }
+
+  const data: LetterData = await response.json();
+  return data;
 };
 
 export const fetchResult = async (nickname: string, chatroom_id: number) => {

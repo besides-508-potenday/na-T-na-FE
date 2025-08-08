@@ -7,6 +7,19 @@ export interface Character {
   is_unknown: boolean;
 }
 
+export interface LetterData {
+  chatroom_id: string;
+  is_finished: boolean;
+  current_distance: number;
+  letter: string;
+  user_nickname: string;
+  chatbot_name: string;
+  chatbot_id: number;
+  from_chatbot: string;
+  letter_mp3: string;
+  chatbot_result_image: string;
+}
+
 export interface AppState {
   nickname: string;
   selectedChatbotId: number | null;

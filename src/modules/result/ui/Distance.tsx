@@ -1,6 +1,6 @@
 import { BlueSpotIcon, GreenStonesIcon, RedSpotIcon } from '@/assets/pictures';
 
-export function Distance() {
+export function Distance({ currentDistance }: { currentDistance: number }) {
   return (
     <div className="flex flex-col items-center w-full relative mb-3 ">
       {/* 상단 텍스트 */}
@@ -22,7 +22,7 @@ export function Distance() {
           className="absolute bottom-0 text-center text-black text-[30px] pb-5 pr-10 leading-[1em] w-full"
           style={{ fontFamily: 'DungGeunMo' }}
         >
-          <span className="text-[#FF5CA4]">100</span>M
+          <span className="text-[#FF5CA4]">{currentDistance}</span>M
         </div>
         {/* 가운데 초록색 돌들 */}
         <div className="flex-1 flex justify-center items-end pt-15">
