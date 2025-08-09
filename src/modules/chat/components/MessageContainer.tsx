@@ -7,13 +7,11 @@ import HeartBar from './HeartBar';
 
 interface MessageContainerProps {
   messageList: any[];
-  user?: any;
   currentHearts?: number;
 }
 
 const MessageContainer = ({
   messageList,
-  user,
   currentHearts = 5,
 }: MessageContainerProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -37,13 +35,13 @@ const MessageContainer = ({
       <div className="flex-1 overflow-y-auto space-y-4 pt-4">
         {messageList.map((message, index) => {
           const isSystem = message.user?.name === 'system';
-          const isMyMessage = user && message.user?.name === user.name;
-          const isOtherMessage = !isSystem && !isMyMessage;
+          const isUserMessage = message.sender_type === 'USER';
+          const isBotMessage = message.sender_type === 'BOT';
 
           const showAvatar =
-            isOtherMessage &&
+            isBotMessage &&
             (index === 0 ||
-              messageList[index - 1].user?.name === user?.name ||
+              messageList[index - 1].sender_type === 'USER' ||
               messageList[index - 1].user?.name === 'system');
 
           if (isSystem) {
@@ -59,7 +57,7 @@ const MessageContainer = ({
             );
           }
 
-          if (isMyMessage) {
+          if (isUserMessage) {
             return (
               <div key={message._id || index} className="flex justify-end px-4">
                 <MyMessageBubble>
@@ -69,7 +67,8 @@ const MessageContainer = ({
             );
           }
 
-          const showCharacter = Math.random() > 0.7; // 30% 확률로 캐릭터 이미지 표시 (실제로는 게임 로직에 따라)
+          // 봇 메시지의 경우 reaction_image가 있으면 캐릭터 이미지 표시
+          const showCharacter = message.reaction_image;
 
           return (
             <div
@@ -85,8 +84,8 @@ const MessageContainer = ({
                   )}
                 >
                   <img
-                    src="/tudag.png"
-                    alt="투닥이"
+                    src={message.chatbot_profile_image || '/tudag.png'}
+                    alt={message.user?.name || '챗봇'}
                     className="w-5 h-5 object-contain"
                   />
                 </div>
@@ -105,12 +104,12 @@ const MessageContainer = ({
                     </span>
                   </div>
                 )}
-                {/* 캐릭터 이미지 (특정 상황에서만 표시) */}
+                {/* 리액션 이미지 (서버에서 제공되는 경우) */}
                 {showCharacter && (
                   <div className="py-4 ml-2">
                     <img
-                      src="/tudag.png"
-                      alt="캐릭터"
+                      src={message.reaction_image || '/tudag.png'}
+                      alt="리액션"
                       className="w-24 h-full object-cover"
                     />
                   </div>

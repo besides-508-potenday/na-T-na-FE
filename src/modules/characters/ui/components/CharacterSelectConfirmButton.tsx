@@ -2,9 +2,9 @@ import { StepIcon } from '@/assets/icons';
 import { useCharacterById } from '@/hooks/useCharacters';
 import { useAppStore } from '@/store';
 import { useNavigate } from 'react-router';
-import { initiateChatSession } from '@/lib/api';
 import { useState } from 'react';
 import type { ChatInitResponse } from '@/types';
+import socket from '@/server';
 
 const CharacterSelectConfirmButton = () => {
   const navigate = useNavigate();
@@ -18,23 +18,34 @@ const CharacterSelectConfirmButton = () => {
     if (selectedChatbotId && nickname) {
       setIsLoading(true);
 
-      const socket = initiateChatSession(
-        nickname,
-        selectedChatbotId,
-        (data: ChatInitResponse) => {
-          // 채팅 세션 데이터를 store에 저장
-          setChatSession(data);
-          // 서버 응답을 받으면 chatroom_id로 이동
-          navigate(`/chat/${data.chatroom_id}`);
-          socket.disconnect();
-          setIsLoading(false);
-        },
-        (error: string) => {
-          console.error('채팅 세션 시작 실패:', error);
-          setIsLoading(false);
-          // 에러 처리 (필요시 에러 페이지로 이동)
-        }
-      );
+      // 최초 1회 수신: join_room 이후 서버가 보내는 초기 BOT 메시지 (join_room_success)
+      socket.once('join_room_success', (data: ChatInitResponse) => {
+        setChatSession(data);
+        console.log('data', data);
+        navigate(`/chat/${data.chatroom_id}`);
+        setIsLoading(false);
+      });
+
+      // 오류 이벤트 처리
+      socket.once('join_room_error', (err: { error: string }) => {
+        console.error('채팅 세션 시작 실패:', err?.error);
+        setIsLoading(false);
+      });
+
+      // 연결 상태에 따라 join_room 전송
+      const payload = {
+        user_nickname: nickname,
+        chatbot_id: selectedChatbotId,
+      };
+
+      if (socket.disconnected) {
+        socket.connect();
+        socket.once('connect', () => {
+          socket.emit('join_room', payload);
+        });
+      } else {
+        socket.emit('join_room', payload);
+      }
     }
   };
 

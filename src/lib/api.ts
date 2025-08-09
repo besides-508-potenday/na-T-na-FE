@@ -1,11 +1,5 @@
-import type { Character, ChatInitResponse, LetterData } from '@/types';
-import { io, Socket } from 'socket.io-client';
+import type { Character, LetterData } from '@/types';
 
-interface SocketResponse {
-  ok: boolean;
-  data?: ChatInitResponse;
-  error?: string;
-}
 const API_BASE_URL = 'http://localhost:3000';
 
 // 캐릭터 데이터 가져오기
@@ -45,36 +39,4 @@ export const fetchLetterData = async (
   return data;
 };
 
-// Socket connection and chat initiation
-export const initiateChatSession = (
-  nickname: string,
-  chatbotId: number,
-  onSuccess: (data: ChatInitResponse) => void,
-  onError: (error: string) => void
-): Socket => {
-  const socket = io('http://localhost:5001');
-
-  socket.on('connect', () => {
-    // 연결되면 join_room 이벤트로 데이터 전송
-    const payload = {
-      user_nickname: nickname,
-      chatbot_id: chatbotId,
-    };
-
-    socket.emit('join_room', payload, (response: SocketResponse) => {
-      if (response.ok && response.data) {
-        onSuccess(response.data);
-      } else {
-        onError(response.error || '채팅방 생성 실패');
-      }
-    });
-  });
-
-  socket.on('connect_error', () => {
-    onError('소켓 연결 오류');
-  });
-
-  return socket;
-};
-
-
+// 기존 콜백 기반 소켓 유틸 제거 (서버에서 'message' 브로드캐스트를 수신하도록 클라이언트 측에서만 처리)
