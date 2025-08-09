@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { Toaster } from '@/components/ui/sonner';
 import socket from '@/server';
 import InputField from '@/modules/chat/components/InputField';
 import MessageContainer from '@/modules/chat/components/MessageContainer';
@@ -65,15 +67,16 @@ function Chat() {
     });
 
     // 에러 수신 처리
-    socket.on('message_error', (err: { error: string }) => {
+    socket.on('policy_error', (err: { error: string }) => {
       console.error('메시지 에러:', err?.error);
+      toast.error(err?.error ?? '부적절한 메시지가 감지되었어요.');
       // 에러 수신 시 입력 가능 상태로 전환
       setIsWaitingResponse(false);
     });
 
     return () => {
       socket.off('message');
-      socket.off('message_error');
+      socket.off('policy_error');
     };
   }, [chatSession]);
 
@@ -112,6 +115,23 @@ function Chat() {
         </div>
 
         <div className="flex-shrink-0 px-4 pb-4 pt-2 ">
+          <Toaster
+            position="bottom-center"
+            offset={290}
+            richColors
+            toastOptions={{
+              classNames: {
+                toast:
+                  'rounded-xl border border-[#FFB8C8] bg-[#FFF0F4] shadow-[0_4px_0_0_rgba(0,0,0,0.2)] px-3 p-2',
+                title: 'text-[#D81B60] text-sm',
+                description: 'text-[#D81B60] text-xs',
+                actionButton:
+                  'bg-[#D81B60] text-white hover:bg-[#c01756] focus:ring-0',
+                cancelButton:
+                  'bg-transparent text-[#D81B60] hover:bg-[#FFE3EB]',
+              },
+            }}
+          />
           <InputField
             message={message}
             setMessage={setMessage}
