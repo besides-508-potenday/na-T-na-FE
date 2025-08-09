@@ -13,7 +13,7 @@ function Chat() {
   const [currentHearts, setCurrentHearts] = useState(5); // 하트 상태 관리
   const [isWaitingResponse, setIsWaitingResponse] = useState(false);
   const { chatSession } = useAppStore();
-  console.log({ chatSession, message });
+
   useEffect(() => {
     // 초기 메시지 설정
     if (chatSession) {

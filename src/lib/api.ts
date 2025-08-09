@@ -4,11 +4,6 @@ const API_BASE_URL = 'http://localhost:3000';
 
 // 캐릭터 데이터 가져오기
 // API 응답 타입 정의
-interface ApiResponse {
-  data: {
-    chatbots: Character[];
-  };
-}
 
 export const fetchCharacters = async (): Promise<Character[]> => {
   const response = await fetch(`${API_BASE_URL}/api/chatbots`);
@@ -19,9 +14,9 @@ export const fetchCharacters = async (): Promise<Character[]> => {
     );
   }
 
-  const data: ApiResponse = await response.json();
-
-  return data.data.chatbots;
+  const data = await response.json();
+  console.log({ data });
+  return data;
 };
 
 export const fetchLetterData = async (
