@@ -2,22 +2,44 @@ import { StepIcon } from '@/assets/icons';
 import { useCharacterById } from '@/hooks/useCharacters';
 import { useAppStore } from '@/store';
 import { useNavigate } from 'react-router';
+import { initiateChatSession } from '@/lib/api';
+import { useState } from 'react';
+import type { ChatInitResponse } from '@/types';
 
 const CharacterSelectConfirmButton = () => {
   const navigate = useNavigate();
-  const { selectedChatbotId } = useAppStore();
+  const { selectedChatbotId, nickname, setChatSession } = useAppStore();
   const { data: selectedCharacter } = useCharacterById(
     selectedChatbotId || undefined
   );
+  const [isLoading, setIsLoading] = useState(false);
 
-  console.log('selectedCharacter', selectedCharacter?.is_unknown);
   const handleClick = () => {
-    if (selectedChatbotId) {
-      navigate('/chat');
+    if (selectedChatbotId && nickname) {
+      setIsLoading(true);
+
+      const socket = initiateChatSession(
+        nickname,
+        selectedChatbotId,
+        (data: ChatInitResponse) => {
+          // 채팅 세션 데이터를 store에 저장
+          setChatSession(data);
+          // 서버 응답을 받으면 chatroom_id로 이동
+          navigate(`/chat/${data.chatroom_id}`);
+          socket.disconnect();
+          setIsLoading(false);
+        },
+        (error: string) => {
+          console.error('채팅 세션 시작 실패:', error);
+          setIsLoading(false);
+          // 에러 처리 (필요시 에러 페이지로 이동)
+        }
+      );
     }
   };
 
-  const isDisabled = !selectedCharacter || selectedCharacter?.is_unknown;
+  const isDisabled =
+    !selectedCharacter || selectedCharacter?.is_unknown || isLoading;
 
   return (
     <button
@@ -37,7 +59,11 @@ const CharacterSelectConfirmButton = () => {
         }`}
         style={{ fontFamily: 'DungGeunMo' }}
       >
-        {isDisabled ? 'Comming Soon!' : '이 친구랑 대화할래요'}
+        {selectedCharacter?.is_unknown
+          ? 'Comming Soon!'
+          : isLoading
+          ? '대화방 생성 중...'
+          : '이 친구랑 대화할래요'}
       </span>
     </button>
   );

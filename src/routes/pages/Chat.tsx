@@ -7,30 +7,34 @@ import LayoutCard from '@/components/LayoutCard';
 import { useAppStore } from '@/store';
 
 function Chat() {
-  const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
-  const [messageList, setMessageList] = useState([]);
-  const [currentHearts, setCurrentHearts] = useState(7); // 하트 상태 관리
-  const { nickname, selectedChatbotId } = useAppStore();
-  console.log('nickname', nickname, selectedChatbotId);
+  const [messageList, setMessageList] = useState<any[]>([]);
+  const [currentHearts, setCurrentHearts] = useState(5); // 하트 상태 관리
+  const { chatSession } = useAppStore();
+
   useEffect(() => {
+    // 초기 메시지 설정
+    if (chatSession) {
+      const initialMessage = {
+        user: {
+          name: chatSession.chatbot_name,
+          id: chatSession.chatbot_id,
+        },
+        message: chatSession.message,
+        sender_type: chatSession.sender_type,
+      };
+      setMessageList([initialMessage]);
+      setCurrentHearts(chatSession.heart_life);
+    }
+
     socket.on('message', (message) => {
       setMessageList((prev) => prev.concat(message));
     });
-    askUserName();
-  }, []);
 
-  const askUserName = () => {
-    const userName = prompt('Enter your name');
-
-    console.log('uuu', userName);
-
-    socket.emit('login', userName, (res: any) => {
-      if (res?.ok) {
-        setUser(res.data);
-      }
-    });
-  };
+    return () => {
+      socket.off('message');
+    };
+  }, [chatSession]);
 
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,7 +59,6 @@ function Chat() {
         <div className="flex-1 overflow-hidden">
           <MessageContainer
             messageList={messageList}
-            user={user}
             currentHearts={currentHearts}
           />
         </div>

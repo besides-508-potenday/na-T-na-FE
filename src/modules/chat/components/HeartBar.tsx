@@ -2,13 +2,13 @@ import React from 'react';
 import { FullHeartIcon, DeadHeartIcon } from '../../../assets/pictures';
 
 interface HeartBarProps {
-  currentHearts: number; // 현재 하트 개수 (0-10)
-  maxHearts?: number; // 최대 하트 개수 (기본값: 10)
+  currentHearts: number; // 현재 하트 개수 (0-5)
+  maxHearts?: number; // 최대 하트 개수 (기본값: 5)
 }
 
 const HeartBar: React.FC<HeartBarProps> = ({
   currentHearts,
-  maxHearts = 10,
+  maxHearts = 5,
 }) => {
   const hearts = Array.from({ length: maxHearts }, (_, index) => {
     const isAlive = index < currentHearts;

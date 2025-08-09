@@ -7,16 +7,20 @@ export const useAppStore = create<AppState>()(
     (set) => ({
       nickname: '',
       selectedChatbotId: null,
+      chatSession: null,
 
       setNickname: (nickname: string) => set({ nickname }),
 
       setSelectedChatbotId: (chatbotId: number) =>
         set({ selectedChatbotId: chatbotId }),
 
+      setChatSession: (session) => set({ chatSession: session }),
+
       resetState: () =>
         set({
           nickname: '',
           selectedChatbotId: null,
+          chatSession: null,
         }),
     }),
     {
@@ -24,6 +28,7 @@ export const useAppStore = create<AppState>()(
       partialize: (state) => ({
         nickname: state.nickname,
         selectedChatbotId: state.selectedChatbotId,
+        chatSession: state.chatSession,
       }), // 지속할 상태만 선택
     }
   )

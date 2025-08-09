@@ -7,14 +7,14 @@ import HeartBar from './HeartBar';
 
 interface MessageContainerProps {
   messageList: any[];
-  user: any;
+  user?: any;
   currentHearts?: number;
 }
 
 const MessageContainer = ({
   messageList,
   user,
-  currentHearts = 7,
+  currentHearts = 5,
 }: MessageContainerProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -36,24 +36,24 @@ const MessageContainer = ({
       {/* 메시지 영역 */}
       <div className="flex-1 overflow-y-auto space-y-4 pt-4">
         {messageList.map((message, index) => {
-          const isSystem = message.user.name === 'system';
-          const isMyMessage = message.user.name === user.name;
+          const isSystem = message.user?.name === 'system';
+          const isMyMessage = user && message.user?.name === user.name;
           const isOtherMessage = !isSystem && !isMyMessage;
 
           const showAvatar =
             isOtherMessage &&
             (index === 0 ||
-              messageList[index - 1].user.name === user.name ||
-              messageList[index - 1].user.name === 'system');
+              messageList[index - 1].user?.name === user?.name ||
+              messageList[index - 1].user?.name === 'system');
 
           if (isSystem) {
             return (
               <div
-                key={message._id}
+                key={message._id || index}
                 className="flex justify-center items-center py-2"
               >
                 <div className="bg-muted/60 rounded-full px-4 py-1 text-sm text-muted-foreground">
-                  {message.chat}
+                  {message.message || message.chat}
                 </div>
               </div>
             );
@@ -61,8 +61,10 @@ const MessageContainer = ({
 
           if (isMyMessage) {
             return (
-              <div key={message._id} className="flex justify-end px-4">
-                <MyMessageBubble>{message.chat}</MyMessageBubble>
+              <div key={message._id || index} className="flex justify-end px-4">
+                <MyMessageBubble>
+                  {message.message || message.chat}
+                </MyMessageBubble>
               </div>
             );
           }
@@ -70,7 +72,10 @@ const MessageContainer = ({
           const showCharacter = Math.random() > 0.7; // 30% 확률로 캐릭터 이미지 표시 (실제로는 게임 로직에 따라)
 
           return (
-            <div key={message._id} className="flex items-start gap-1 px-4">
+            <div
+              key={message._id || index}
+              className="flex items-start gap-1 px-4"
+            >
               {/* 프로필 */}
               <div className="flex flex-col items-center">
                 <div
@@ -96,7 +101,7 @@ const MessageContainer = ({
                       className="text-xs font-semibold text-black"
                       style={{ fontFamily: 'Pretendard' }}
                     >
-                      투닥이
+                      {message.user?.name || '투닥이'}
                     </span>
                   </div>
                 )}
@@ -112,7 +117,9 @@ const MessageContainer = ({
                 )}
 
                 {/* 메시지 버블 */}
-                <AiMessageBubble>{message.chat}</AiMessageBubble>
+                <AiMessageBubble>
+                  {message.message || message.chat}
+                </AiMessageBubble>
               </div>
             </div>
           );
