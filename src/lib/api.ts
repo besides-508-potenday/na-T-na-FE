@@ -22,7 +22,9 @@ export const fetchCharacters = async (): Promise<Character[]> => {
 export const fetchLetterData = async (
   chatroom_id: string
 ): Promise<LetterData> => {
-  const response = await fetch(`${API_BASE_URL}/api/letters/${chatroom_id}`);
+  const response = await fetch(
+    `${API_BASE_URL}/api/chatrooms/${chatroom_id}/letters`
+  );
 
   if (!response.ok) {
     throw new Error(
