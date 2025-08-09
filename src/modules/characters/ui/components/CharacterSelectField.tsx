@@ -57,7 +57,7 @@ export const CharacterSelectField = () => {
       {/* 캐릭터 이미지 */}
       <div className="w-[210px] h-[210px] bg-[#EFFFD3] border-[#AAFE75] border-[3px]  rounded-full flex items-center justify-center overflow-hidden">
         <img
-          src={`/${currentCharacter.chatbot_profile_image}`}
+          src={currentCharacter.chatbot_profile_image}
           alt={currentCharacter.chatbot_name}
           className=" object-cover"
         />

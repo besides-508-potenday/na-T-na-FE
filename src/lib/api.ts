@@ -1,6 +1,6 @@
 import type { Character, LetterData } from '@/types';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://www.distance-from-f.click';
 
 // 캐릭터 데이터 가져오기
 // API 응답 타입 정의
@@ -15,7 +15,7 @@ export const fetchCharacters = async (): Promise<Character[]> => {
   }
 
   const data = await response.json();
-
+  console.log({ data });
   return data;
 };
 

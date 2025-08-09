@@ -47,14 +47,12 @@ export const CharacterInfo = () => {
             className="text-black text-lg font-semibold"
             style={{ fontFamily: 'Pretendard' }}
           >
-            {selectedCharacter.chatbot_personalities
+            {(selectedCharacter.chatbot_personalities ?? '')
               .split('\n')
-              .map((line, index) => (
+              .map((line, index, arr) => (
                 <span key={index}>
                   {line}
-                  {index <
-                    selectedCharacter.chatbot_personalities.split('\n').length -
-                      1 && <br />}
+                  {index < arr.length - 1 && <br />}
                 </span>
               ))}
           </span>
