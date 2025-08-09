@@ -11,6 +11,7 @@ function Chat() {
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState<any[]>([]);
   const [currentHearts, setCurrentHearts] = useState(5); // 하트 상태 관리
+  const [isWaitingResponse, setIsWaitingResponse] = useState(false);
   const { chatSession } = useAppStore();
   console.log({ chatSession, message });
   useEffect(() => {
@@ -54,17 +55,20 @@ function Chat() {
       setMessageList((prev) => prev.concat(newMessage));
 
       // 봇 메시지인 경우 하트, 거리, 턴 수 업데이트
-      if (
-        messageData.sender_type === 'BOT' &&
-        messageData.heart_life !== undefined
-      ) {
-        setCurrentHearts(messageData.heart_life);
+      if (messageData.sender_type === 'BOT') {
+        if (messageData.heart_life !== undefined) {
+          setCurrentHearts(messageData.heart_life);
+        }
+        // BOT 응답 수신 시 입력 가능 상태로 전환
+        setIsWaitingResponse(false);
       }
     });
 
     // 에러 수신 처리
     socket.on('message_error', (err: { error: string }) => {
       console.error('메시지 에러:', err?.error);
+      // 에러 수신 시 입력 가능 상태로 전환
+      setIsWaitingResponse(false);
     });
 
     return () => {
@@ -76,7 +80,8 @@ function Chat() {
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!chatSession || !message.trim()) return;
+    // 60자 초과 방지 가드
+    if (!chatSession || !message.trim() || message.length > 60) return;
 
     // 서버에 새로운 형식으로 메시지 전송
     const clientMessage: ClientMessage = {
@@ -90,6 +95,8 @@ function Chat() {
     socket.emit('send_message', clientMessage);
 
     setMessage('');
+    // 전송 후 응답 대기 상태 진입
+    setIsWaitingResponse(true);
   };
 
   return (
@@ -109,6 +116,7 @@ function Chat() {
             message={message}
             setMessage={setMessage}
             sendMessage={sendMessage}
+            disabled={isWaitingResponse}
           />
         </div>
       </div>
