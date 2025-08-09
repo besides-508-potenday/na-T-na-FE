@@ -14,7 +14,6 @@ export async function shareLink(
   // Try native share first
   if (typeof navigator !== 'undefined' && 'share' in navigator) {
     try {
-      // @ts-expect-error: navigator.share is available in supporting browsers
       await navigator.share({ url, title, text });
       return 'shared';
     } catch {

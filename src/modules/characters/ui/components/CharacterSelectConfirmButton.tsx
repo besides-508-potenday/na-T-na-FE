@@ -21,7 +21,7 @@ const CharacterSelectConfirmButton = () => {
       // 최초 1회 수신: join_room 이후 서버가 보내는 초기 BOT 메시지 (join_room_success)
       socket.once('join_room_success', (data: ChatInitResponse) => {
         setChatSession(data);
-        console.log('data', data);
+
         navigate(`/chat/${data.chatroom_id}`);
         setIsLoading(false);
       });
