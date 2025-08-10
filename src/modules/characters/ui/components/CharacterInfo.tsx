@@ -1,5 +1,5 @@
-import { useAppStore } from '@/store';
-import { useCharacterById } from '@/hooks/useCharacters';
+import { useAppStore } from "@/store";
+import { useCharacterById } from "@/hooks/useCharacters";
 
 export const CharacterInfo = () => {
   const { selectedChatbotId } = useAppStore();
@@ -21,14 +21,14 @@ export const CharacterInfo = () => {
       <div className="flex items-center gap-5 w-full">
         <span
           className="text-[#18181B] text-[32px] leading-[1em] whitespace-nowrap"
-          style={{ fontFamily: 'DungGeunMo' }}
+          style={{ fontFamily: "DungGeunMo" }}
         >
           이름
         </span>
         <div className="flex-1 bg-white border-[2px] border-[#9E85FD] rounded px-2 py-1">
           <span
             className="text-[#18181B] text-lg font-semibold"
-            style={{ fontFamily: 'Pretendard' }}
+            style={{ fontFamily: "Pretendard" }}
           >
             {selectedCharacter.chatbot_name}
           </span>
@@ -38,17 +38,17 @@ export const CharacterInfo = () => {
       <div className="flex items-center gap-5 w-full">
         <span
           className="text-[#18181B] text-[32px] leading-[1em] whitespace-nowrap"
-          style={{ fontFamily: 'DungGeunMo' }}
+          style={{ fontFamily: "DungGeunMo" }}
         >
           성격
         </span>
         <div className="flex-1 bg-white border-[2px] border-[#9E85FD] rounded px-2 py-1">
           <span
             className="text-black text-lg font-semibold"
-            style={{ fontFamily: 'Pretendard' }}
+            style={{ fontFamily: "Pretendard" }}
           >
-            {(selectedCharacter.chatbot_personalities ?? '')
-              .split('\n')
+            {(selectedCharacter.chatbot_personality ?? "")
+              .split("\n")
               .map((line, index, arr) => (
                 <span key={index}>
                   {line}
@@ -57,18 +57,18 @@ export const CharacterInfo = () => {
               ))}
           </span>
         </div>
-      </div>{' '}
+      </div>{" "}
       <div className="flex items-center gap-5 w-full">
         <span
           className="text-[#18181B] text-[32px] leading-[1em] whitespace-nowrap"
-          style={{ fontFamily: 'DungGeunMo' }}
+          style={{ fontFamily: "DungGeunMo" }}
         >
           특징
         </span>
         <div className="flex-1 bg-white border-[2px] border-[#9E85FD] rounded px-2 py-1">
           <span
             className="text-[#18181B] text-lg font-semibold"
-            style={{ fontFamily: 'Pretendard' }}
+            style={{ fontFamily: "Pretendard" }}
           >
             {selectedCharacter.chatbot_speciality}
           </span>
