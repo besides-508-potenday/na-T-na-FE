@@ -37,7 +37,7 @@ export interface ChatInitResponse {
   chatbot_name: string;
   current_distance: number;
   heart_life: number;
-  sender_type: 'BOT';
+  sender_type: "BOT";
   message: string;
   chatbot_profile_image: string;
   turn_count: number;
@@ -47,7 +47,7 @@ export interface ChatInitResponse {
 export interface ClientMessage {
   chatbot_id: number;
   message: string;
-  sender_type: 'USER';
+  sender_type: "USER";
   chatroom_id: string;
   user_id: string;
 }
@@ -59,7 +59,7 @@ export interface MessageData {
   message: string;
   user_id: string;
   user_nickname: string;
-  sender_type: 'USER' | 'BOT';
+  sender_type: "USER" | "BOT";
   chatroom_id: string;
   score?: number;
   chatbot_profile_image?: string;

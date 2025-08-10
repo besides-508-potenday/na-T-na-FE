@@ -18,8 +18,6 @@ function Chat() {
   const { chatSession } = useAppStore();
   const navigate = useNavigate();
 
-  console.log({ chatSession });
-
   useEffect(() => {
     // 초기 메시지 설정
     if (chatSession) {
