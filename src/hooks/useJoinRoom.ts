@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useAppStore } from '@/store';
 import type { ChatInitResponse } from '@/types';
@@ -13,7 +13,7 @@ export const useJoinRoom = () => {
   const { selectedChatbotId, nickname, setChatSession } = useAppStore();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleJoinRoom = useCallback(() => {
+  const handleJoinRoom = () => {
     if (!selectedChatbotId || !nickname) return;
 
     setIsLoading(true);
@@ -35,6 +35,7 @@ export const useJoinRoom = () => {
           }
 
           const data = res as ChatInitResponse;
+
           setChatSession(data);
           navigate(`/chat/${data.chatroom_id}`);
           setIsLoading(false);
@@ -43,7 +44,7 @@ export const useJoinRoom = () => {
     };
 
     emitJoinWithAck();
-  }, [navigate, nickname, selectedChatbotId, setChatSession]);
+  };
 
   return {
     isLoading,
