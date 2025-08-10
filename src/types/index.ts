@@ -2,7 +2,7 @@ export interface Character {
   chatbot_id: number;
   chatbot_profile_image: string;
   chatbot_name: string;
-  chatbot_personalities: string;
+  chatbot_personality: string;
   chatbot_speciality: string;
   is_unknown: boolean;
 }

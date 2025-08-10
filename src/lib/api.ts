@@ -1,7 +1,6 @@
 import type { Character, LetterData } from '@/types';
 
 const API_BASE_URL = 'https://www.distance-from-f.click';
-//
 
 export const fetchCharacters = async (): Promise<Character[]> => {
   const response = await fetch(`${API_BASE_URL}/api/chatbots`);
@@ -13,7 +12,7 @@ export const fetchCharacters = async (): Promise<Character[]> => {
   }
 
   const data = await response.json();
-
+  console.log({ data });
   return data;
 };
 

@@ -18,6 +18,8 @@ function Chat() {
   const { chatSession } = useAppStore();
   const navigate = useNavigate();
 
+  console.log({ chatSession });
+
   useEffect(() => {
     // 초기 메시지 설정
     if (chatSession) {
@@ -34,7 +36,7 @@ function Chat() {
     }
 
     // 서버에서 오는 모든 메시지 처리 (사용자 메시지 + 봇 메시지)
-    socket.on('answer', (messageData: MessageData) => {
+    socket.on('quiz', (messageData: MessageData) => {
       console.log('메시지 받음:', messageData);
 
       // 메시지 리스트에 추가할 형식으로 변환
@@ -55,7 +57,6 @@ function Chat() {
         reaction_image: messageData.reaction_image,
         chatbot_profile_image: messageData.chatbot_profile_image,
       };
-
       setMessageList((prev) => prev.concat(newMessage));
 
       // 봇 메시지인 경우 하트, 거리, 턴 수 업데이트
