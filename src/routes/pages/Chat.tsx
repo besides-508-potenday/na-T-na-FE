@@ -8,6 +8,7 @@ import MessageContainer from '@/modules/chat/components/MessageContainer';
 import LayoutCard from '@/components/LayoutCard';
 import { useAppStore } from '@/store';
 import type { ClientMessage, MessageData } from '@/types';
+import { useNavigate } from 'react-router';
 
 function Chat() {
   const [message, setMessage] = useState('');
@@ -15,6 +16,7 @@ function Chat() {
   const [currentHearts, setCurrentHearts] = useState(5); // 하트 상태 관리
   const [isWaitingResponse, setIsWaitingResponse] = useState(false);
   const { chatSession } = useAppStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 초기 메시지 설정
@@ -64,6 +66,10 @@ function Chat() {
         // BOT 응답 수신 시 입력 가능 상태로 전환
         setIsWaitingResponse(false);
       }
+
+      if (messageData.turn_count === 0) {
+        navigate(`/result/${messageData.chatroom_id}`);
+      }
     });
 
     // 에러 수신 처리
@@ -78,7 +84,7 @@ function Chat() {
       socket.off('message');
       socket.off('policy_error');
     };
-  }, [chatSession]);
+  }, [chatSession, navigate]);
 
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();

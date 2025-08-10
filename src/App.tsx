@@ -1,16 +1,16 @@
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet } from 'react-router';
 
 function App() {
-  const navigate = useNavigate();
-  const handleResultClick = () => {
-    navigate('/result/1');
-  };
-  const handleErrorClick = () => {
-    navigate('/error');
-  };
-  const handleLoadingClick = () => {
-    navigate('/loading');
-  };
+  // const navigate = useNavigate();
+  // const handleResultClick = () => {
+  //   navigate('/result/1');
+  // };
+  // const handleErrorClick = () => {
+  //   navigate('/error');
+  // };
+  // const handleLoadingClick = () => {
+  //   navigate('/loading');
+  // };
   return (
     <>
       <main className="bg-[#fffde4] bg-cover bg-center mx-auto min-w-[375px] max-w-[480px] min-h-[812px] max-h-[1039px]">
@@ -24,7 +24,7 @@ function App() {
             <Outlet />
           </div>
         </div>
-        <div className="flex items-center justify-center gap-4 mb-5">
+        {/* <div className="flex items-center justify-center gap-4 mb-5">
           {' '}
           <button
             onClick={handleResultClick}
@@ -44,7 +44,7 @@ function App() {
           >
             로딩창
           </button>
-        </div>
+        </div> */}
       </main>
     </>
   );
