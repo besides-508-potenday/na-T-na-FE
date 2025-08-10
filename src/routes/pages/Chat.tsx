@@ -40,14 +40,8 @@ function Chat() {
       // 메시지 리스트에 추가할 형식으로 변환
       const newMessage = {
         user: {
-          name:
-            messageData.sender_type === 'USER'
-              ? messageData.user_nickname
-              : messageData.chatbot_name,
-          id:
-            messageData.sender_type === 'USER'
-              ? messageData.user_id
-              : messageData.chatbot_id,
+          name: messageData.chatbot_name,
+          id: messageData.chatbot_id,
         },
         message: messageData.message,
         sender_type: messageData.sender_type,
@@ -99,7 +93,7 @@ function Chat() {
       chatroom_id: chatSession.chatroom_id,
       user_id: chatSession.user_id,
     };
-
+    setMessageList((prev) => prev.concat(clientMessage));
     socket.emit('answer', clientMessage);
 
     setMessage('');
