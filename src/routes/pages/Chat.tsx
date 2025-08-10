@@ -34,7 +34,7 @@ function Chat() {
     }
 
     // 서버에서 오는 모든 메시지 처리 (사용자 메시지 + 봇 메시지)
-    socket.on('message', (messageData: MessageData) => {
+    socket.on('answer', (messageData: MessageData) => {
       console.log('메시지 받음:', messageData);
 
       // 메시지 리스트에 추가할 형식으로 변환
@@ -81,7 +81,7 @@ function Chat() {
     });
 
     return () => {
-      socket.off('message');
+      socket.off('answer');
       socket.off('policy_error');
     };
   }, [chatSession, navigate]);
@@ -101,7 +101,7 @@ function Chat() {
       user_id: chatSession.user_id,
     };
 
-    socket.emit('send_message', clientMessage);
+    socket.emit('answer', clientMessage);
 
     setMessage('');
     // 전송 후 응답 대기 상태 진입
