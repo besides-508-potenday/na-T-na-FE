@@ -123,7 +123,7 @@ function Chat() {
         <div className="flex-shrink-0 px-4 pb-4 pt-2 ">
           <Toaster
             position="bottom-center"
-            offset={290}
+            offset={240}
             richColors
             toastOptions={{
               classNames: {
