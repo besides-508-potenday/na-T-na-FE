@@ -34,7 +34,8 @@ function Chat() {
     }
 
     // 서버에서 오는 모든 메시지 처리 (사용자 메시지 + 봇 메시지)
-    socket.on('quiz', (messageData: MessageData) => {
+    socket.on('answer', (data: any) => {
+      const messageData: MessageData = data.data;
       console.log('메시지 받음:', messageData);
 
       // 메시지 리스트에 추가할 형식으로 변환
@@ -63,6 +64,20 @@ function Chat() {
       if (messageData.turn_count === 0) {
         navigate(`/result/${messageData.chatroom_id}`);
       }
+    });
+
+    socket.on('quiz', (data: any) => {
+      const quizData = data.data;
+      console.log('퀴즈 받음:', quizData);
+      const newQuiz = {
+        user: {
+          name: quizData.chatbot_name,
+          id: quizData.chatbot_id,
+        },
+        message: quizData.message,
+        sender_type: quizData.sender_type,
+      };
+      setMessageList((prev) => prev.concat(newQuiz));
     });
 
     // 에러 수신 처리
@@ -94,6 +109,7 @@ function Chat() {
       user_id: chatSession.user_id,
     };
     setMessageList((prev) => prev.concat(clientMessage));
+
     socket.emit('answer', clientMessage);
 
     setMessage('');

@@ -4,6 +4,7 @@ import { Distance } from './Distance';
 import type { LetterData } from '@/types';
 
 export function LetterPage({ letterData }: { letterData: LetterData }) {
+  console.log({ letterData });
   return (
     <CustomScrollArea className="h-[540px] w-full " type="always">
       <div className="flex flex-col  gap-1 mb-10">
@@ -22,7 +23,7 @@ export function LetterPage({ letterData }: { letterData: LetterData }) {
       </div>
       <div className="w-full flex justify-center mb-6 pr-8">
         <img
-          src={`/${letterData.chatbot_result_image}`}
+          src={letterData.chatbot_result_image}
           alt={letterData.chatbot_name}
           className="w-full max-w-[210px] h-auto"
         />
