@@ -4,7 +4,6 @@ import { Distance } from './Distance';
 import type { LetterData } from '@/types';
 
 export function LetterPage({ letterData }: { letterData: LetterData }) {
-  console.log({ letterData });
   return (
     <CustomScrollArea className="h-[540px] w-full " type="always">
       <div className="flex flex-col  gap-1 mb-10">
@@ -34,6 +33,7 @@ export function LetterPage({ letterData }: { letterData: LetterData }) {
         userName={letterData.user_nickname}
         chatbotName={letterData.chatbot_name}
         letterContent={letterData.letter}
+        fromChatbot={letterData.from_chatbot}
       />
       <CustomScrollBar />
     </CustomScrollArea>

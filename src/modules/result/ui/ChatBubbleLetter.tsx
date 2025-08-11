@@ -2,12 +2,14 @@ interface ChatBubbleLetterProps {
   userName: string;
   chatbotName: string;
   letterContent: string;
+  fromChatbot: string;
 }
 
 export function ChatBubbleLetter({
   userName,
   chatbotName,
   letterContent,
+  fromChatbot,
 }: ChatBubbleLetterProps) {
   return (
     <div className="relative flex flex-col items-stretch gap-2.5 py-3 pl-3 pr-6 w-full max-w-[350px]">
@@ -51,9 +53,7 @@ export function ChatBubbleLetter({
               color: '#18181B',
             }}
           >
-            힘들었던 하루 끝에,
-            <br />
-            {chatbotName}
+            {fromChatbot}
           </p>
         </div>
       </div>
