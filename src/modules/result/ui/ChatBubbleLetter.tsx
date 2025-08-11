@@ -53,7 +53,12 @@ export function ChatBubbleLetter({
               color: '#18181B',
             }}
           >
-            {fromChatbot}
+            {fromChatbot.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                {index < fromChatbot.split('\n').length - 1 && <br />}
+              </span>
+            ))}
           </p>
         </div>
       </div>

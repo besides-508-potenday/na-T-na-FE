@@ -62,7 +62,9 @@ function Chat() {
       }
 
       if (messageData.turn_count === 0) {
-        navigate(`/result/${messageData.chatroom_id}`);
+        setTimeout(() => {
+          navigate(`/result/${messageData.chatroom_id}`);
+        }, 4000);
       }
     });
 
@@ -81,7 +83,8 @@ function Chat() {
     });
 
     // 에러 수신 처리
-    socket.on('policy_error', (err: { error: string }) => {
+    socket.on('policy_error', (err) => {
+      console.log('에러 받음:', err);
       console.error('메시지 에러:', err?.error);
       toast.error(err?.error ?? '부적절한 메시지가 감지되었어요.');
       // 에러 수신 시 입력 가능 상태로 전환
