@@ -78,9 +78,11 @@ export function useChat() {
         err?.error ?? '부적절한 메시지가 감지되었어요.';
       setErrorMessage(receivedErrorMessage);
       setShowError(true);
+      setMessageList((prev) => prev.slice(0, -1));
+
       setTimeout(() => {
         setShowError(false);
-      }, 3000);
+      }, 4000);
       setIsWaitingResponse(false);
     });
 
