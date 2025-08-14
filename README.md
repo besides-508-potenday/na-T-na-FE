@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+# na-T-na
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 프로젝트 소개
 
-Currently, two official plugins are available:
+이 프로젝트는 비사이드 포텐데이(AI 해커톤)에서 진행한 NAVER Cloud AI 개발 도구를 활용한 T성향이 ‘티’나는 사람을 위한 F 공감 시뮬레이션 챗봇 서비스.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+기획자 1명/디자이너 2명/프론트엔드 개발자 1명/ 백엔드 개발자 1명/ AI개발자 1명이 모여 진행
 
-## Expanding the ESLint configuration
+## 실행 방법
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+$ git clone https://github.com/besides-508-potenday/na-T-na-FE.git
+$ npm install
+$ npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 기술 스택
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<p>
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<img src="https://img.shields.io/badge/npm-CB3837?&logo=npm&logoColor=white" alt="npm">
+<img src="https://img.shields.io/badge/typescript-3178C6?&logo=typescript&logoColor=white"  alt="typescript">
+<img src="https://img.shields.io/badge/vite-646CFF?&logo=vite&logoColor=white" alt="vite">
+<img src="https://img.shields.io/badge/React-61DAFB?&logo=React&logoColor=white"  alt="React">
+
+<img src="https://img.shields.io/badge/reactrouter-CA4245?&logo=reactrouter&logoColor=white"  alt="reactrouter">
+<img src="https://img.shields.io/badge/TanStackQuery-FF4154?&logo=ReactQuery&logoColor=white" alt="TanStackQuery">
+<img src="https://img.shields.io/badge/zustand-000000?&logo=zustand&logoColor=white" alt="zustand">
+
+<img src="https://img.shields.io/badge/framer-0055FF?&logo=framer&logoColor=white" alt="framer">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?&logo=tailwindcss&logoColor=white" alt="tailwindcss">
+<img src="https://img.shields.io/badge/shadcnui-000000?&logo=shadcnui&logoColor=white" alt="shadcnui">
+
+<img src="https://img.shields.io/badge/socket.io-010101?&logo=socketdotio&logoColor=white" alt="socketdotio">
+
+<img src="https://img.shields.io/badge/vercel-000000?&logo=vercel&logoColor=white" alt="vercel">
+
+</p>
+
+## FE 아키텍쳐
+
+![alt text](image.png)
+
+## 구현내용
