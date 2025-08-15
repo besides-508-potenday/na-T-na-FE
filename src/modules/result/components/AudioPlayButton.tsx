@@ -10,7 +10,6 @@ export function AudioPlayButton({ letterMp3 }: AudioPlayButtonProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // letterMp3가 제공되면 사용하고, 아니면 기본 파일 사용
   const audioSrc = letterMp3 || mySong;
 
   const toggleAudio = () => {

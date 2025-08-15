@@ -21,7 +21,7 @@ export function ShareResultButton({
       } else {
         toast.success('링크를 복사했어요. 친구에게 붙여넣기 해보세요!');
       }
-    } catch (e) {
+    } catch {
       toast.error('공유에 실패했어요. 잠시 후 다시 시도해주세요.');
     }
   };

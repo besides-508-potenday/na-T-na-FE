@@ -2,9 +2,11 @@ import { DotFreshIcon } from '@/assets/icons';
 import { useNavigate } from 'react-router';
 export function RefreshButton() {
   const navigate = useNavigate();
+
   const handleRefresh = () => {
     navigate('/');
   };
+  
   return (
     <button
       onClick={handleRefresh}
