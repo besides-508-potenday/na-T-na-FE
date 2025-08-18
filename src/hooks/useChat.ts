@@ -105,7 +105,7 @@ export function useChat() {
       chatroom_id: chatSession.chatroom_id,
       user_id: chatSession.user_id,
     };
-    setMessageList((prev) => prev.concat(clientMessage));
+    // setMessageList((prev) => prev.concat(clientMessage));
 
     socket.emit('answer', clientMessage);
 
