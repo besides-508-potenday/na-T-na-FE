@@ -35,10 +35,7 @@ export const createJoinRoomResponse = (
 
 // 챗봇 응답 메시지 생성 함수
 export const createBotResponse = (
-  userMessage: string,
-  chatSession: ChatInitResponse,
-  currentTurnCount: number
-): MessageData => {
+    _message: string, chatSession: ChatInitResponse, currentTurnCount: number): MessageData => {
   // 간단한 응답 로직 (실제로는 더 복잡한 AI 로직이 필요)
   const responses = [
     '흐윽... 그렇게 말하니까 내가 너무 예민한 사람 같아.. ㅠㅜ 난 그저 친구를 생각하는 마음인데ㅠㅠ ',
