@@ -51,7 +51,7 @@ class MockSocket {
         }, 500); // 네트워크 지연 시뮬레이션
       }
     } else if (event === 'answer') {
-      // send_message 이벤트 처리
+      // answer 이벤트 처리 (사용자 메시지 전송)
       const messageData: ClientMessage = data;
 
       if (this.currentChatSession) {
@@ -65,6 +65,8 @@ class MockSocket {
           this.triggerEvent('answer', {
             data: {
               ...messageData,
+              user_nickname: this.currentChatSession?.user_nickname,
+              chatbot_name: this.currentChatSession?.chatbot_name,
               sender_type: 'USER',
               chatbot_profile_image:
                 this.currentChatSession?.chatbot_profile_image,
@@ -88,7 +90,7 @@ class MockSocket {
 
           // 턴 카운트가 0이면 게임 종료
           if (this.currentTurnCount <= 0) {
-            console.log('[Mock Socket] 게임 종료');
+            console.log('[Mock Socket] 게임 종료 - 결과 페이지로 이동');
           }
         }, 1000 + Math.random() * 2000); // 1-3초 사이 랜덤 지연
       }

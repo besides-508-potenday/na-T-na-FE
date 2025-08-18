@@ -27,9 +27,9 @@ export const httpHandlers = [
   // 결과 페이지 데이터 조회 API
   http.get(
     'https://www.distance-from-f.click/api/chatrooms/:chatroomId/letters',
-    ({ params }) => {
+    ({ params }: { params: { chatroomId: string } }) => {
       const { chatroomId } = params;
-      const letterData = createLetterData(chatroomId as string);
+      const letterData = createLetterData(chatroomId);
       return HttpResponse.json(letterData);
     }
   ),
