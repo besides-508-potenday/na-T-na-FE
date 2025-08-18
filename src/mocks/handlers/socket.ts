@@ -130,12 +130,6 @@ export const mockSocket = new MockSocket();
 
 // 원래 소켓을 모킹 소켓으로 대체하는 함수
 export const setupSocketMock = () => {
-  // 개발 환경에서만 모킹 소켓 사용
-  if (process.env.NODE_ENV === 'development') {
-    console.log('[Mock Socket] Socket.IO 모킹이 활성화되었습니다.');
-    return mockSocket;
-  }
-
-  // 프로덕션에서는 실제 소켓 사용
-  return null;
+  console.log('[Mock Socket] Socket.IO 모킹이 활성화되었습니다.');
+  return mockSocket;
 };

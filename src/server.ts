@@ -1,10 +1,9 @@
-import { io } from 'socket.io-client';
+// import { io } from 'socket.io-client';
 import { setupSocketMock } from './mocks/handlers/socket';
 
-// 개발 환경에서는 모킹 소켓 사용, 프로덕션에서는 실제 소켓 사용
-const socket =
-  process.env.NODE_ENV === 'development'
-    ? setupSocketMock() || io('https://www.distance-from-f.click')
-    : io('https://www.distance-from-f.click');
+// 모든 환경에서 모킹 소켓 사용 (실제 서버 대신 모킹 사용)
+const socket = setupSocketMock();
+
+console.log('[Server] MSW 소켓 모킹 사용');
 
 export default socket;

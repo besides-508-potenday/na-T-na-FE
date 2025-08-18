@@ -13,7 +13,7 @@ const createLetterData = (chatroomId: string): LetterData => {
     chatbot_name: '투닥이',
     chatbot_id: 1,
     from_chatbot: '우리의 우정이 더욱 깊어지길 바라며,,\n 투닥이',
-    letter_mp3: 'result.mp3',
+    letter_mp3: '/result.mp3',
     chatbot_result_image: '/투닥이2.png',
   };
 };
