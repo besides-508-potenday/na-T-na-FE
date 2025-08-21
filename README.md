@@ -6,7 +6,6 @@
 
 기획자 1명/디자이너 2명/프론트엔드 개발자 1명/ 백엔드 개발자 1명/ AI개발자 1명이 모여 진행 
 
-
 ## 실행 방법
 
 ```sh
@@ -53,7 +52,7 @@ $ npm run dev
 - Socket.IO를 통해 chatroom_id로 채팅 방 입장 
 - Socket.IO를 통해 실시간으로 5개의 문답을 진행
 - 답변에 따라 AI가 거리를 판단하여 하트로 표시
-- 부적절한 답변 작성시(욕설등) 경고창 표시시
+- 부적절한 답변 작성시(욕설등) 경고창 표시
 
 ### 결과 페이지
 - 클로바 AI로부터 챗봇(투닥이)과의 거리 판단을 받고 화면에 표시
@@ -74,3 +73,21 @@ $ npm run dev
 **src/lib**: API 호출 및 유틸리티 함수들이 포함되어 있습니다.
 
 **src/assets**: 프로젝트에서 사용된 애니메이션,폰트, svg 형식의 아이콘, svg 그림들이 저장되어잇습니다. 
+
+<br>
+
+> 전체 시연
+
+https://github.com/user-attachments/assets/03562005-99b1-4b57-83d9-137b84915be5
+
+<br>
+
+> 채팅대화 시연
+
+https://github.com/user-attachments/assets/8ab339ad-0bf5-4a8a-9a53-3c7d7342cde3
+
+<br>
+
+> 결과이미지 공유 시연
+
+https://github.com/user-attachments/assets/fa1c8418-48a0-40e8-8e49-2e6e0e69175a
