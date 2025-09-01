@@ -1,6 +1,9 @@
 import type { Character, LetterData } from '@/types';
+import { io } from 'socket.io-client';
 
 const API_BASE_URL = 'https://www.distance-from-f.click';
+
+export const socket = io(API_BASE_URL);
 
 export const fetchCharacters = async (): Promise<Character[]> => {
   const response = await fetch(`${API_BASE_URL}/api/chatbots`);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import socket from '@/server';
+import { socket } from '@/lib/api';
 import { useAppStore } from '@/store';
 import type { ClientMessage, MessageData } from '@/types';
 

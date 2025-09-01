@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useAppStore } from '@/store';
-import socket from '@/server';
+import { socket } from '@/lib/api';
 
 export const useJoinRoom = () => {
   const navigate = useNavigate();
